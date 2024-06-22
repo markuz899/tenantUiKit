@@ -1,5 +1,4 @@
-import BeautifulTimeline from "./components/Timeline";
-import BeautifulTimelineItem from "./components/TimelineItem";
+import { Button } from "./components";
 import "./index.css";
 
-export { BeautifulTimeline, BeautifulTimelineItem };
+export { Button };
