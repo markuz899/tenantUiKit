@@ -1,4 +1,4 @@
-(function(h,O){typeof exports=="object"&&typeof module<"u"?O(exports,require("react")):typeof define=="function"&&define.amd?define(["exports","react"],O):(h=typeof globalThis<"u"?globalThis:h||self,O(h["react-beautiful-timeline"]={},h.React))})(this,function(h,O){"use strict";var J={exports:{}},x={};/**
+(function(h,O){typeof exports=="object"&&typeof module<"u"?O(exports,require("react")):typeof define=="function"&&define.amd?define(["exports","react"],O):(h=typeof globalThis<"u"?globalThis:h||self,O(h.tenantuikit={},h.React))})(this,function(h,O){"use strict";var J={exports:{}},x={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *

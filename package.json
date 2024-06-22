@@ -1,9 +1,9 @@
 {
-  "name": "react-beautiful-timeline",
-  "description": "Modern responsive React timeline with animations",
+  "name": "tenantuikit",
+  "description": "Tenant React components library",
   "private": false,
-  "version": "2.0.4",
-  "author": "Mevlüt Can Tuna",
+  "version": "0.0.1",
+  "author": "Marco Liberati",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.umd.js",
