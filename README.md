@@ -16,6 +16,20 @@ for local test
   npm install ../library/tenantUiKit
 ```
 
+## Testing
+
+Before pushing the changes create the build version
+
+```bash
+  npm run build
+```
+
+for local test
+
+```bash
+  npm run build-watch
+```
+
 ## How to create a component
 
 - Move inside /lib/components folder
