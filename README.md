@@ -16,7 +16,7 @@ for local test
   npm install ../library/tenantUiKit
 ```
 
-## Testing
+## Testing and deploy
 
 Before pushing the changes create the build version
 
@@ -36,6 +36,8 @@ for local test
 - Create a new folder with the component name
 - Create file "index.tsx"
 - Create file "interface.ts"
+- Insert new export inside /lib/components/index.ts
+- Insert new export inside /lib/index.ts
 - Template of components
 
 ```javascript
