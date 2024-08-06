@@ -1,9 +1,7 @@
-import "./index.css";
 // components
-import { Button, Icon, Radio } from "./components";
-import { ThemeProvider } from "./contexts/themeContext";
+import { Button, Checkbox, Icon, Radio } from "./components";
 // context
-// import ThemeContext, { useTheme } from "./contexts/themeContext";
+import { ThemeProvider } from "./contexts/themeContext";
 
 // export { Button, ThemeContext, useTheme };
-export { Button, Icon, Radio, ThemeProvider };
+export { Button, Checkbox, Icon, Radio, ThemeProvider };
