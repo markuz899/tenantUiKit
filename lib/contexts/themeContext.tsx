@@ -35,16 +35,10 @@ interface ThemeProviderProps {
   children: any;
 }
 
-import styled, {
-  createGlobalStyle,
-  css,
-  ThemeProvider as StyledProvider,
-} from "styled-components";
+import { ThemeProvider as StyledProvider } from "styled-components";
 
 const ThemeProvider = ({ theme, children }: ThemeProviderProps) => {
   return <StyledProvider theme={theme}>{children}</StyledProvider>;
 };
 
-const globalStyle = createGlobalStyle;
-
-export { ThemeProvider, globalStyle, styled, css };
+export { ThemeProvider };
