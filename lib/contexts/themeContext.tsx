@@ -36,6 +36,7 @@ interface ThemeProviderProps {
 }
 
 import styled, {
+  createGlobalStyle,
   css,
   ThemeProvider as StyledProvider,
 } from "styled-components";
@@ -44,4 +45,6 @@ const ThemeProvider = ({ theme, children }: ThemeProviderProps) => {
   return <StyledProvider theme={theme}>{children}</StyledProvider>;
 };
 
-export { ThemeProvider, styled, css };
+const globalStyle = createGlobalStyle;
+
+export { ThemeProvider, globalStyle, styled, css };
