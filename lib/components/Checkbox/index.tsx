@@ -4,7 +4,6 @@ import Icon from "../Icon";
 import { CheckboxProps } from "./interface";
 
 /* eslint-disable */
-
 const Checkbox: React.FC<CheckboxProps> = ({
   refer,
   name = "check-default",
@@ -117,8 +116,7 @@ const Box = styled.div<{
     left: 0;
     font-size: ${({ theme }) => theme.font.size.mini};
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     label {
       max-width: 80%;
     }
