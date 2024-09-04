@@ -21,6 +21,7 @@
     "./dist/style.css": "./dist/style.css"
   },
   "scripts": {
+    "dev": "vite",
     "build": "tsc && vite build",
     "build-watch": "rm -rf ./dist && tsc && vite build --watch",
     "lint": "eslint --fix './lib/**/*.{ts,tsx,js,jsx}' && prettier . --write './lib/**/*.{ts,tsx,js,jsx,css}'",
@@ -32,9 +33,9 @@
     "./lib/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^6.1.12",
+    "react": "^18",
+    "react-dom": "^18",
+    "styled-components": "^6.1.11",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
