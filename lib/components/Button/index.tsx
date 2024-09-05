@@ -1,5 +1,9 @@
-import styled from "styled-components";
 import { ButtonProps } from "./interface";
+import styled from "styled-components";
+
+const Style = styled.button`
+  background: red;
+`;
 
 const Button = ({ children, label }: ButtonProps) => {
   const content = children || label;
@@ -7,7 +11,3 @@ const Button = ({ children, label }: ButtonProps) => {
 };
 
 export default Button;
-
-const Style = styled.button`
-  border: 1px solid red;
-`;
