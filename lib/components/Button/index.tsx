@@ -12,10 +12,10 @@ const Style = styled.button<{ theme: Theme }>`
   background: ${({ theme }) => theme.colors.success};
 `;
 
-const Button = ({ theme, children, label }: ButtonProps) => {
+const Button = ({ t, children, label }: ButtonProps) => {
   const content = children || label;
   return (
-    <ThemeProvider theme={theme || themeDefault}>
+    <ThemeProvider theme={t || themeDefault}>
       <Style>{content}</Style>
     </ThemeProvider>
   );
