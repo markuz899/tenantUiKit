@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useTheme = (initialTheme: any) => {
-  console.log("initial", initialTheme);
+const useTheme = (initialTheme?: any) => {
   const [theme, setTheme] = useState<any>(initialTheme);
 
   const setThemeMode = (theme: any) => {

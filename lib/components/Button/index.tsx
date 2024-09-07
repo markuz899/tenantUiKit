@@ -1,3 +1,4 @@
+import { useTheme } from "../../hooks/useTheme";
 import { ButtonProps } from "./interface";
 import styled from "styled-components";
 
@@ -12,6 +13,8 @@ const Style = styled.button<{ theme: Theme }>`
 `;
 
 const Button = ({ children, label }: ButtonProps) => {
+  const { themeCurrent } = useTheme();
+  console.log("from comp", themeCurrent);
   const content = children || label;
   return <Style>{content}</Style>;
 };
