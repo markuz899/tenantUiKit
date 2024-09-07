@@ -2,7 +2,7 @@
   "name": "tenantuikit",
   "description": "Tenant React components library",
   "private": false,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "Marco Liberati",
   "license": "MIT",
   "type": "module",
