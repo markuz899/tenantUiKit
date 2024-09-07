@@ -42,8 +42,10 @@ for local test
 
 ```javascript
 import { ButtonProps } from "./interface";
+import { useTheme } from "styled-components";
 
 const Button = ({ children, label }: ButtonProps) => {
+  const theme = useTheme() // current theme
   const content = children || label;
   return <button>{content}</button>;
 };
