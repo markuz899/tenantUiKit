@@ -1,11 +1,16 @@
 import { ButtonProps } from "./interface";
 import styled from "styled-components";
 
-const Style = styled.button`
-  background: ${({ theme }) => {
-    console.log("theme-styled", theme);
-    return "red";
-  }};
+interface Theme {
+  [key: string]: any;
+  colors: {
+    success: string;
+    [key: string]: any;
+  };
+}
+
+const Style = styled.button<{ theme: Theme }>`
+  background: ${({ theme }) => theme.colors.success};
 `;
 
 const Button = ({ children, label }: ButtonProps) => {
