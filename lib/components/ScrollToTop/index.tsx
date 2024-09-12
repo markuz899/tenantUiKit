@@ -30,11 +30,7 @@ const ScrollToTop: React.FC = () => {
     isVisible && (
       <Scroll $isVisible={isVisible} onClick={scrollToTop}>
         <div>
-          <Icon
-            name="angle-top"
-            color={theme.colors.white}
-            size={theme.spaces.space4}
-          />
+          <Icon name="angle-top" color={theme.colors.white} size={theme.spaces.space4} />
         </div>
       </Scroll>
     )
@@ -72,8 +68,7 @@ const Scroll = styled.div<ScrollProps>`
   position: fixed;
   bottom: ${({ theme }) => theme.spaces.space6};
   right: ${({ theme }) => theme.spaces.space6};
-  animation: ${(p) => (p.$isVisible ? "fadeIn" : "fadeOut")} 700ms ease-in 0.5s
-    both;
+  animation: ${(p) => (p.$isVisible ? "fadeIn" : "fadeOut")} 700ms ease-in 0.5s both;
   cursor: pointer;
   display: flex;
   align-items: center;

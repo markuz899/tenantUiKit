@@ -34,8 +34,7 @@ const Tabs: React.FC<TabsProps> = ({
   const tabRef = useRef<HTMLDivElement>(null);
   const selectorRef = useRef<HTMLDivElement>(null);
 
-  const initialValue =
-    options?.find((item) => item.checked) || options[0] || [];
+  const initialValue = options?.find((item) => item.checked) || options[0] || [];
   const [selected, setValue] = useState<Option>(initialValue);
 
   useEffect(() => {
@@ -125,7 +124,6 @@ const Buttons = styled.div`
     border-radius: 6px;
     transition-duration: 0.6s;
     background: ${({ theme }) => theme.colors.primary};
-    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
   }
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
   }
@@ -147,14 +145,14 @@ const Tab = styled.button<{ $iconColor: string }>`
     svg {
       transition-delay: 0.3s;
       color: ${({ theme }) => theme.colors.white};
-      fill: ${({ $iconColor, theme }) =>
-        $iconColor ? $iconColor : theme.colors.white};
+      fill: ${({ $iconColor, theme }) => ($iconColor ? $iconColor : theme.colors.white)};
     }
   }
   .d-flex {
     display: flex;
     align-items: center;
     p {
+      margin: 0;
       line-height: 1;
       font-size: ${({ theme }) => theme.font.size.tiny};
     }
@@ -172,7 +170,8 @@ const Tab = styled.button<{ $iconColor: string }>`
 const Box = styled.div`
   box-shadow: ${({ theme }) => theme.extra.shadow};
   border-radius: ${({ theme }) => theme.extra.radiusBig};
-  padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space3} ${theme.spaces.space3}`};
+  padding: ${({ theme }) =>
+    `${theme.spaces.space1} ${theme.spaces.space3} ${theme.spaces.space3}`};
   background: ${({ theme }) => theme.colors.white};
   width: 100%;
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

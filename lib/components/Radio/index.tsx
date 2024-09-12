@@ -22,10 +22,7 @@ const Radio: React.FC<RadioProps> = ({
     setState(defaultValue);
   }, [defaultValue]);
 
-  const handleOnClick = (
-    e: React.MouseEvent<HTMLDivElement>,
-    newValue: any,
-  ) => {
+  const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, newValue: any) => {
     if (!disabled) {
       if (newValue !== state) {
         setState(newValue);
@@ -80,8 +77,7 @@ const Placeholder = styled.span`
 const Options = styled.div<{ $inline: any; $isError: boolean | undefined }>`
   display: flex;
   flex-direction: ${(props) => (props.$inline == 1 ? "row" : "column")};
-  color: ${({ $isError, theme }) =>
-    $isError ? theme.colors.error : "inherit"};
+  color: ${({ $isError, theme }) => ($isError ? theme.colors.error : "inherit")};
   input {
     position: absolute;
     opacity: 0;
@@ -107,8 +103,7 @@ const Option = styled.div<{ active: any; disabled: boolean }>`
     height: 22px;
     border-radius: 50%;
     border: 2px solid
-      ${({ active, theme }) =>
-        active ? theme.colors.primary : theme.colors.greyIcon};
+      ${({ active, theme }) => (active ? theme.colors.primary : theme.colors.greyIcon)};
     &:hover {
       opacity: 0.8;
     }
@@ -122,8 +117,7 @@ const Option = styled.div<{ active: any; disabled: boolean }>`
     }
   }
   span {
-    color: ${({ active, theme }) =>
-      active ? theme.colors.primary : "inherit"};
+    color: ${({ active, theme }) => (active ? theme.colors.primary : "inherit")};
     margin: 0 ${({ theme }) => theme.spaces.space4} 0
       ${({ theme }) => theme.spaces.space3};
     display: inline-block;

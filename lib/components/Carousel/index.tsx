@@ -90,7 +90,7 @@ const Carousel = ({
           onClick={handleChange}
           modules={[Pagination, Autoplay]}
           onSlideChange={() => {}}
-          onSwiper={(swiper:any) => {}}
+          onSwiper={(swiper: any) => {}}
           autoplay={{
             delay: 3000,
             pauseOnMouseEnter: true,
@@ -211,11 +211,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
         inset: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          120deg,
-          rgba(130, 13, 13, 0.8),
-          rgba(39, 8, 92, 0.8)
-        );
+        background: linear-gradient(120deg, rgba(130, 13, 13, 0.8), rgba(39, 8, 92, 0.8));
         mix-blend-mode: multiply;
         z-index: 1;
       }

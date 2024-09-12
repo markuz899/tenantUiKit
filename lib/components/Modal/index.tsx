@@ -179,8 +179,7 @@ const Header = styled.div`
 const Content = styled.div<ModalContentProps>`
   position: relative;
   transition: 1s;
-  padding: ${({ $noTitle, theme }) =>
-    $noTitle ? "none" : theme.spaces.space4};
+  padding: ${({ $noTitle, theme }) => ($noTitle ? "none" : theme.spaces.space4)};
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.spaces.space3};
   height: ${(props) => props.size[1]}px;

@@ -144,8 +144,7 @@ const Page = styled.button<{ active?: boolean }>`
   min-width: 32px;
   background: ${({ active, theme }) =>
     active ? theme.colors.primary : theme.colors.white};
-  color: ${({ active, theme }) =>
-    active ? theme.colors.white : theme.colors.primary};
+  color: ${({ active, theme }) => (active ? theme.colors.white : theme.colors.primary)};
   border: 1px solid ${({ theme }) => theme.colors.greyIcon};
   align-items: center;
   border-radius: 3px;

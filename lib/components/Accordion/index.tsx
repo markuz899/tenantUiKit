@@ -3,11 +3,7 @@ import styled, { css, useTheme } from "styled-components";
 import Icon from "../Icon";
 import { AccordionProps, AccordionItemProps } from "./interface";
 
-const Accordion: React.FC<AccordionProps> = ({
-  options,
-  inline = false,
-  multipleOpen = false,
-}) => {
+const Accordion: React.FC<AccordionProps> = ({ options, inline = false, multipleOpen = false }) => {
   const theme = useTheme();
 
   const [clicked, setClicked] = useState<number | null>(null);
@@ -45,9 +41,7 @@ const Accordion: React.FC<AccordionProps> = ({
     <ContentAccordion $inline={inline}>
       {options?.map((faq, index: number) => (
         <AccordionItem
-          onToggle={() =>
-            !multipleOpen ? handleToggle(index) : handleMultiToggle(index)
-          }
+          onToggle={() => (!multipleOpen ? handleToggle(index) : handleMultiToggle(index))}
           active={isActive(index)}
           key={index}
           faq={faq}
@@ -59,11 +53,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
 export default Accordion;
 
-const AccordionItem: React.FC<AccordionItemProps> = ({
-  faq,
-  active,
-  onToggle,
-}) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ faq, active, onToggle }) => {
   const theme = useTheme();
 
   const { question, answer } = faq;
@@ -82,16 +72,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
       <div
         ref={contentEl}
         className="answer_wrapper"
-        style={
-          active
-            ? { height: contentEl.current?.scrollHeight }
-            : { height: "0px" }
-        }
+        style={active ? { height: contentEl.current?.scrollHeight } : { height: "0px" }}
       >
-        <div
-          className="answer"
-          dangerouslySetInnerHTML={{ __html: answer }}
-        ></div>
+        <div className="answer" dangerouslySetInnerHTML={{ __html: answer }}></div>
       </div>
     </li>
   );

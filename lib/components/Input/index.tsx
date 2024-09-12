@@ -68,11 +68,7 @@ const Input = forwardRef<InputRef, InputProps>(
       },
     }));
 
-    const text = importantDefault
-      ? defaultValue
-      : !enableControlledInput
-        ? state
-        : value;
+    const text = importantDefault ? defaultValue : !enableControlledInput ? state : value;
     const dataValue = !enableControlledInput ? hasValue : !!value;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,11 +95,7 @@ const Input = forwardRef<InputRef, InputProps>(
 
     let after = icon && (
       <After onClick={inputSelectAction ? toggleSelectAction : undefined}>
-        <Icon
-          name={icon}
-          size={theme.font.size.normal}
-          color={theme.colors.primary}
-        />
+        <Icon name={icon} size={theme.font.size.normal} color={theme.colors.primary} />
       </After>
     );
 
@@ -157,11 +149,7 @@ const Input = forwardRef<InputRef, InputProps>(
 
     if (isError && message) {
       errorTooltip = (
-        <Icon
-          name="warning-circular"
-          color={theme.colors.error}
-          margin="0 0 0 10px"
-        />
+        <Icon name="warning-circular" color={theme.colors.error} margin="0 0 0 10px" />
       );
       errorMessage = <p className="error-msg text-error">*{message}</p>;
     }
@@ -423,8 +411,7 @@ const Label = styled.label<{
     bottom: 50%;
     right: 0;
     border-radius: inherit;
-    background-color: ${(p) =>
-      p.$labelBgColor ? p.$labelBgColor : "transparent"};
+    background-color: ${(p) => (p.$labelBgColor ? p.$labelBgColor : "transparent")};
   }
 
   &::after {
@@ -437,11 +424,7 @@ const Label = styled.label<{
     right: 0;
     border-radius: none;
     background-color: ${({ theme, $labelBgColor, $inputBgColor }) =>
-      $labelBgColor
-        ? $labelBgColor
-        : $inputBgColor
-          ? $inputBgColor
-          : theme.colors.white};
+      $labelBgColor ? $labelBgColor : $inputBgColor ? $inputBgColor : theme.colors.white};
   }
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.font.size.tiny};

@@ -55,8 +55,7 @@ const Wrapper = styled.span<{ color?: string; $uppercase: boolean }>`
     transition: opacity 0.5s ease-in-out;
     display: inline-block;
     color: ${({ color, theme }) => (color ? color : theme.colors.primary)};
-    text-transform: ${({ $uppercase }) =>
-      $uppercase ? "uppercase" : "inherit"};
+    text-transform: ${({ $uppercase }) => ($uppercase ? "uppercase" : "inherit")};
   }
   &.fade {
     opacity: 0;

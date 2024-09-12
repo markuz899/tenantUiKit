@@ -87,10 +87,7 @@ const Select: React.FC<SelectProps> = ({
     // eslint-disable-next-line
   }, [defaultValues, options, disabled]);
 
-  const onSelect = (
-    item: { label: string; value: string },
-    callback: () => void,
-  ) => {
+  const onSelect = (item: { label: string; value: string }, callback: () => void) => {
     const { label, value } = item;
     if (multiselect) {
       let selected = [...values];
@@ -145,11 +142,7 @@ const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const handleShowDrop = (
-    show: () => void,
-    visible: boolean,
-    close: () => void,
-  ) => {
+  const handleShowDrop = (show: () => void, visible: boolean, close: () => void) => {
     if (filtered.length > 0) {
       show();
     }
@@ -162,11 +155,7 @@ const Select: React.FC<SelectProps> = ({
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLDivElement>,
-    {
-      show,
-      visible,
-      close,
-    }: { show: () => void; visible: boolean; close: () => void },
+    { show, visible, close }: { show: () => void; visible: boolean; close: () => void },
   ) => {
     if (e.key === "Enter") {
       const { label, value } = filtered[hover];

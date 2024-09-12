@@ -63,9 +63,7 @@ const Table: React.FC<TableProps> = ({
                 return (
                   !disableSelectAll && (
                     <Checkbox
-                      onChange={(d: any) =>
-                        props.toggleAllRowsSelected(d.value)
-                      }
+                      onChange={(d: any) => props.toggleAllRowsSelected(d.value)}
                       checked={checked}
                     />
                   )
@@ -81,9 +79,7 @@ const Table: React.FC<TableProps> = ({
                 return (
                   <Cell>
                     <Checkbox
-                      onChange={(d: any) =>
-                        props.row.toggleRowSelected(d.value)
-                      }
+                      onChange={(d: any) => props.row.toggleRowSelected(d.value)}
                       checked={checked}
                       disabled={disabled}
                     />
@@ -111,10 +107,7 @@ const Table: React.FC<TableProps> = ({
 
                 return (
                   <Cell>
-                    <Radio
-                      onClick={() => handleSelect(values)}
-                      $active={checked}
-                    >
+                    <Radio onClick={() => handleSelect(values)} $active={checked}>
                       <div className="selector" />
                     </Radio>
                   </Cell>
@@ -148,22 +141,14 @@ const Table: React.FC<TableProps> = ({
                   {headerGroup.headers.map((column: any) => {
                     return (
                       // eslint-disable-next-line
-                      <th
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps(),
-                        )}
-                      >
+                      <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                         <div>
                           {column.render("Header")}
                           <span>
                             {column.isSorted && (
                               <Icon
                                 size="10px"
-                                name={
-                                  column.isSortedDesc
-                                    ? "angle-down"
-                                    : "angle-top"
-                                }
+                                name={column.isSortedDesc ? "angle-down" : "angle-top"}
                               />
                             )}
                           </span>
@@ -184,9 +169,7 @@ const Table: React.FC<TableProps> = ({
                     {row.cells.map((cell: any) => {
                       return (
                         // eslint-disable-next-line
-                        <td {...cell.getCellProps()}>
-                          {cell.render("Cell", extraData)}
-                        </td>
+                        <td {...cell.getCellProps()}>{cell.render("Cell", extraData)}</td>
                       );
                     })}
                   </tr>
@@ -306,8 +289,7 @@ const Radio = styled.div<{ $active: boolean }>`
     border-radius: 50%;
     transition: all 0.3s ease;
     border: 1px solid
-      ${({ $active, theme }) =>
-        $active ? theme.colors.primary : theme.colors.greyIcon};
+      ${({ $active, theme }) => ($active ? theme.colors.primary : theme.colors.greyIcon)};
     &:hover {
       opacity: 0.8;
     }

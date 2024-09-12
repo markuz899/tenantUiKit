@@ -83,19 +83,14 @@ const Textarea = forwardRef<TextareaRef, TextareaProps>(
     let errorTooltip = null;
     if (showPasswordIcon) {
       after = (
-        <After
-          className="pointer"
-          onClick={() => setShowPassword(!showPassword)}
-        >
+        <After className="pointer" onClick={() => setShowPassword(!showPassword)}>
           <Icon name={showPassword ? "eye" : "eye-not"} />
         </After>
       );
     }
 
     if (isError) {
-      errorTooltip = (
-        <Icon name="warning-circular" color={theme.colors.error} />
-      );
+      errorTooltip = <Icon name="warning-circular" color={theme.colors.error} />;
     }
 
     return (
@@ -194,11 +189,7 @@ const Box = styled.div<{
   padding: 0 ${({ theme }) => theme.spaces.space2};
   border: 2px solid
     ${({ isError, $focus, theme }) =>
-      isError
-        ? theme.colors.error
-        : $focus
-          ? theme.colors.primary
-          : theme.colors.dark};
+      isError ? theme.colors.error : $focus ? theme.colors.primary : theme.colors.dark};
   border: 2px solid
     ${({ isError, $focus, theme }) =>
       isError
@@ -320,8 +311,7 @@ const Label = styled.label<{
     bottom: 50%;
     right: 0;
     border-radius: inherit;
-    background-color: ${(p) =>
-      p.$labelBgColor ? p.$labelBgColor : "transparent"};
+    background-color: ${(p) => (p.$labelBgColor ? p.$labelBgColor : "transparent")};
   }
 
   &::after {
@@ -334,11 +324,7 @@ const Label = styled.label<{
     right: 0;
     border-radius: inherit;
     background-color: ${({ $labelBgColor, $inputBgColor, theme }) =>
-      $labelBgColor
-        ? $labelBgColor
-        : $inputBgColor
-          ? $inputBgColor
-          : theme.colors.white};
+      $labelBgColor ? $labelBgColor : $inputBgColor ? $inputBgColor : theme.colors.white};
   }
   .max {
     margin-left: ${({ theme }) => theme.spaces.space2};

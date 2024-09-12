@@ -30,9 +30,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   const setDropdownPosition = () => {
     if (target.current && dropdown.current) {
       const rect = target.current.getBoundingClientRect();
-      const maxWidth = (
-        target.current.firstChild as HTMLElement
-      )?.getBoundingClientRect().width;
+      const maxWidth = (target.current.firstChild as HTMLElement)?.getBoundingClientRect()
+        .width;
       const p: React.CSSProperties = {
         left: leftPosition || 0,
         right: undefined,
@@ -101,12 +100,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <Box className={className} $fluid={fullWidth} ref={target}>
       <div className="target">{renderTarget({ show, close, visible })}</div>
       {renderDropdown && (
-        <RenderDrop
-          position={position}
-          $visible={visible}
-          $width={width}
-          $fluid={fluid}
-        >
+        <RenderDrop position={position} $visible={visible} $width={width} $fluid={fluid}>
           {showArrow && <Arrow top={topPosition} />}
           <Drop ref={dropdown} position={position} size={width} $fluid={fluid}>
             {renderDropdown({ show, close, visible })}
@@ -163,11 +157,7 @@ const RenderDrop = styled.div.attrs(({ position }: any) => ({
   transition: visibility 300ms linear;
   z-index: 1090;
   ${(p) =>
-    p.$fluid
-      ? "width: 100%"
-      : p.$width
-        ? `width: ${p.$width}px`
-        : "width: fit-content"};
+    p.$fluid ? "width: 100%" : p.$width ? `width: ${p.$width}px` : "width: fit-content"};
   height: 100%;
 `;
 
@@ -208,7 +198,7 @@ const Arrow = styled.div<{ top?: number }>`
   background: ${({ theme }) => theme.colors.white};
   border-width: 1px;
   border-style: solid;
-  border-color: transparent ${(props) => props.theme.body}
-    ${(props) => props.theme.body} transparent;
+  border-color: transparent ${(props) => props.theme.body} ${(props) => props.theme.body}
+    transparent;
   z-index: 800;
 `;

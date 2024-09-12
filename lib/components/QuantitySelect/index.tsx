@@ -56,11 +56,7 @@ const QuantitySelect: React.FC<QuantitySelectProps> = ({
   return (
     <StyledQuantity className={className} width={width}>
       <div className="child auto left">
-        <Button
-          kind="primary"
-          onClick={handleLess}
-          disabled={defaultValue === 1}
-        >
+        <Button kind="primary" onClick={handleLess} disabled={defaultValue === 1}>
           <Icon
             name={defaultValue === 1 ? "disabled" : "less"}
             size={theme.spaces.space3}
@@ -76,11 +72,7 @@ const QuantitySelect: React.FC<QuantitySelectProps> = ({
         />
       </div>
       <div className="child auto right">
-        <Button
-          kind="primary"
-          onClick={handlePlus}
-          disabled={defaultValue === max}
-        >
+        <Button kind="primary" onClick={handlePlus} disabled={defaultValue === max}>
           <Icon
             name={defaultValue === max ? "disabled" : "plus"}
             size={theme.spaces.space3}

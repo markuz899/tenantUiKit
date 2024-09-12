@@ -47,9 +47,7 @@ const AccordionBox: React.FC<AccordionProps> = ({
       {options?.map((faq, index: number) => (
         <AccordionItem
           $withTruncate={withTruncate}
-          onToggle={() =>
-            !multipleOpen ? handleToggle(index) : handleMultiToggle(index)
-          }
+          onToggle={() => (!multipleOpen ? handleToggle(index) : handleMultiToggle(index))}
           active={isActive(index)}
           key={index}
           faq={faq}
@@ -61,12 +59,7 @@ const AccordionBox: React.FC<AccordionProps> = ({
 
 export default AccordionBox;
 
-const AccordionItem: React.FC<AccordionItemProps> = ({
-  faq,
-  active,
-  onToggle,
-  $withTruncate,
-}) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ faq, active, onToggle, $withTruncate }) => {
   const theme = useTheme();
 
   const { question, answer } = faq;
@@ -89,16 +82,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
       <div
         ref={contentEl}
         className="answer_wrapper"
-        style={
-          active
-            ? { height: contentEl.current?.scrollHeight }
-            : { height: "0px" }
-        }
+        style={active ? { height: contentEl.current?.scrollHeight } : { height: "0px" }}
       >
-        <div
-          className="answer"
-          dangerouslySetInnerHTML={{ __html: answer }}
-        ></div>
+        <div className="answer" dangerouslySetInnerHTML={{ __html: answer }}></div>
       </div>
     </li>
   );

@@ -192,9 +192,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     }
     if (mode === "multiple" && multiSelected.length) {
       return multiSelected.length > 1
-        ? `${format(multiSelected[0], FORMAT_DATA)} +${
-            multiSelected.length - 1
-          }`
+        ? `${format(multiSelected[0], FORMAT_DATA)} +${multiSelected.length - 1}`
         : format(multiSelected[0], FORMAT_DATA);
     }
     return inputValue;
@@ -211,13 +209,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     );
   };
 
-  const renderTarget = ({
-    show,
-    close,
-  }: {
-    show: () => void;
-    close: () => void;
-  }) => (
+  const renderTarget = ({ show, close }: { show: () => void; close: () => void }) => (
     <Target className={className} onClick={show}>
       <Input
         clearable

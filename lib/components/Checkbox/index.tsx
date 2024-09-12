@@ -25,11 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   if (isError) {
     errorTooltip = (
-      <Icon
-        name="warning-circular"
-        color={theme.colors.error}
-        margin="0 0 0 5px"
-      />
+      <Icon name="warning-circular" color={theme.colors.error} margin="0 0 0 5px" />
     );
     errorMessage = <p className="error-msg text-error">*{message}</p>;
   }

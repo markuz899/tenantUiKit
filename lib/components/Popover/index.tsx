@@ -46,16 +46,12 @@ const Popover: React.FC<PopoverProps> = ({
 
         if (width / 2 > rect.x + rect.width / 2 && width > rect.width) {
           position.left = `${rect.left}px`;
-          if (arrow.current)
-            arrow.current.style.left = `${rect.width / 2 - 8}px`;
+          if (arrow.current) arrow.current.style.left = `${rect.width / 2 - 8}px`;
         }
 
         if (right < width / 2) {
-          position.left = `${
-            innerWidth - (innerWidth - rect.x) - width + rect.width
-          }px`;
-          if (arrow.current)
-            arrow.current.style.left = `${width - rect.width / 2 - 8}px`;
+          position.left = `${innerWidth - (innerWidth - rect.x) - width + rect.width}px`;
+          if (arrow.current) arrow.current.style.left = `${width - rect.width / 2 - 8}px`;
         }
 
         if (rect.y < height) {

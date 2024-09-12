@@ -35,8 +35,7 @@ export default Clicker;
 
 const ClickDom = styled.div<any>`
   &.clicked {
-    border-radius: ${({ $radius, theme }) =>
-      $radius ? theme.extra.radius : "none"};
+    border-radius: ${({ $radius, theme }) => ($radius ? theme.extra.radius : "none")};
     transition: none;
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}60;
   }
