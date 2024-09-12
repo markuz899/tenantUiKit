@@ -12,7 +12,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   defaultValue,
   isError = false,
 }) => {
-
   const theme = useTheme();
 
   const initialValue = options.find((item) => item.checked);
@@ -59,11 +58,11 @@ const Wrapper = styled.div<{ $inline: boolean; $isError: boolean }>`
     display: flex;
     flex-direction: ${(props) => (props.$inline ? "row" : "column")};
     flex-wrap: wrap;
-    gap: ${({theme}) => theme.spaces.space2};
+    gap: ${({ theme }) => theme.spaces.space2};
     button {
       min-width: 80px;
       border-color: ${({ $isError }) =>
-        $isError ? ({theme}) => theme.colors.error : "inherit"};
+        $isError ? ({ theme }) => theme.colors.error : "inherit"};
     }
   }
 `;

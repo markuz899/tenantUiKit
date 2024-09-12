@@ -14,9 +14,8 @@ const Banner: React.FC<BannerProps> = ({
   children,
   className,
 }) => {
-
   const theme = useTheme();
-  
+
   const inner = children ? Children.toArray(children) : content;
   let colorKind = kind;
   if (!availableKinds.includes(kind)) colorKind = "info";
@@ -52,25 +51,25 @@ export default Banner;
 
 const COLORS = {
   warning: css`
-    background: ${({theme}) => theme.colors.warningDark};
-    border: 2px solid ${({theme}) => theme.colors.warning};
+    background: ${({ theme }) => theme.colors.warningDark};
+    border: 2px solid ${({ theme }) => theme.colors.warning};
   `,
   success: css`
-    background: ${({theme}) => theme.colors.successDark};
-    border: 2px solid ${({theme}) => theme.colors.success};
+    background: ${({ theme }) => theme.colors.successDark};
+    border: 2px solid ${({ theme }) => theme.colors.success};
   `,
   error: css`
-    background: ${({theme}) => theme.colors.errorDark};
-    border: 2px solid ${({theme}) => theme.colors.error};
+    background: ${({ theme }) => theme.colors.errorDark};
+    border: 2px solid ${({ theme }) => theme.colors.error};
     .title {
-      color: ${({theme}) => theme.colors.white}!important;
+      color: ${({ theme }) => theme.colors.white}!important;
     }
   `,
   info: css`
-    background: ${({theme}) => theme.colors.primaryDark};
-    border: 2px solid ${({theme}) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.primaryDark};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
     .title {
-      color: ${({theme}) => theme.colors.white}!important;
+      color: ${({ theme }) => theme.colors.white}!important;
     }
   `,
 };
@@ -87,14 +86,14 @@ const Msg = styled.div<MsgProps>`
   display: block;
   align-items: center;
   border-radius: 3px;
-  padding: ${({theme}) => theme.spaces.space2};
-  margin-top: ${({theme}) => theme.spaces.space2};
-  margin-bottom: ${({theme}) => theme.spaces.space2};
+  padding: ${({ theme }) => theme.spaces.space2};
+  margin-top: ${({ theme }) => theme.spaces.space2};
+  margin-bottom: ${({ theme }) => theme.spaces.space2};
   .title {
-    color: ${({$kind, theme}) =>
+    color: ${({ $kind, theme }) =>
       colorBasedOnBg(BASE_COLOR[$kind] || theme.colors.white)};
-    font-size: ${({theme}) => theme.font.size.minor};
-    font-weight: ${({theme}) => theme.font.weight.bold};
+    font-size: ${({ theme }) => theme.font.size.minor};
+    font-weight: ${({ theme }) => theme.font.weight.bold};
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -102,7 +101,7 @@ const Msg = styled.div<MsgProps>`
     .closebtn {
       margin-top: -3px;
       font-size: 26px;
-      font-weight: ${({theme}) => theme.font.weight.regular};
+      font-weight: ${({ theme }) => theme.font.weight.regular};
       line-height: 16px;
       float: right;
       transition: 0.3s;
@@ -113,15 +112,16 @@ const Msg = styled.div<MsgProps>`
     }
   }
   .content {
-    color: ${({$kind, theme}) =>
+    color: ${({ $kind, theme }) =>
       colorBasedOnBg(BASE_COLOR[$kind] || theme.colors.white)};
-    font-size: ${({theme}) => theme.font.size.tiny};
+    font-size: ${({ theme }) => theme.font.size.tiny};
     font-family: Helvetica;
     line-height: 1.2;
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     .title {
-      font-size: ${({theme}) => theme.font.size.small};
+      font-size: ${({ theme }) => theme.font.size.small};
     }
   }
 `;

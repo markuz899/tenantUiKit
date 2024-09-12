@@ -42,7 +42,6 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
   defaultMin,
   defaultMax,
 }) => {
-
   const theme = useTheme();
 
   const [minVal, setMinVal] = useState<number>(defaultMin || min);
@@ -63,7 +62,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
           transition: none;
         }
         .panel-fill{
-          background: ${({theme}: any) => theme.colors.primary};
+          background: ${({ theme }: any) => theme.colors.primary};
           transition: none;
         }
         .pointer-shape{
@@ -73,7 +72,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
 
       slider.addCSS(`
         .panel{
-          border: 2px solid ${({theme}: any) => theme.colors.primary};
+          border: 2px solid ${({ theme }: any) => theme.colors.primary};
         }
         .panel:hover{
           background: inherit;
@@ -114,17 +113,17 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
         value2={maxVal}
         keyboard-disabled="true"
         generate-labels="false"
-        slider-height={({theme}: any) => theme.spaces.space2}
-        slider-bg={({theme}: any) => theme.colors.white}
-        slider-bg-fill={`${({theme}: any) => theme.colors.primary}60`}
+        slider-height={({ theme }: any) => theme.spaces.space2}
+        slider-bg={({ theme }: any) => theme.colors.white}
+        slider-bg-fill={`${({ theme }: any) => theme.colors.primary}60`}
         pointer-width="20px"
         pointer-height="20px"
-        pointer-bg={({theme}: any) => theme.colors.primary}
-        pointer-border={`2px solid ${({theme}: any) => theme.colors.primaryLight}`}
-        pointer-bg-hover={({theme}: any) => theme.colors.primaryDark}
-        pointer-border-hover={`2px solid ${({theme}: any) => theme.colors.primaryLight}`}
-        pointer-border-focus={`2px solid ${({theme}: any) => theme.colors.primaryLight}`}
-        pointer-bg-focus={({theme}: any) => theme.colors.primaryDark}
+        pointer-bg={({ theme }: any) => theme.colors.primary}
+        pointer-border={`2px solid ${({ theme }: any) => theme.colors.primaryLight}`}
+        pointer-bg-hover={({ theme }: any) => theme.colors.primaryDark}
+        pointer-border-hover={`2px solid ${({ theme }: any) => theme.colors.primaryLight}`}
+        pointer-border-focus={`2px solid ${({ theme }: any) => theme.colors.primaryLight}`}
+        pointer-bg-focus={({ theme }: any) => theme.colors.primaryDark}
         pointer2-width="20px"
         pointer2-height="20px"
       ></tc-range-slider>
@@ -140,7 +139,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
 export default MultiRangeSlider;
 
 const ContentRange = styled.div`
-  padding: ${({theme}) => theme.spaces.space2};
+  padding: ${({ theme }) => theme.spaces.space2};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -150,12 +149,12 @@ const ContentRange = styled.div`
   tc-range-slider {
     transition: none;
     position: relative;
-    top: ${({theme}) => theme.spaces.space2};
+    top: ${({ theme }) => theme.spaces.space2};
   }
   .slider {
     width: 100%;
     position: relative;
-    top: ${({theme}) => theme.spaces.space2};
+    top: ${({ theme }) => theme.spaces.space2};
     .slider__left-value,
     .slider__right-value {
       position: absolute;
@@ -163,7 +162,7 @@ const ContentRange = styled.div`
 
     .slider__left-value,
     .slider__right-value {
-      color: ${({theme}) => theme.colors.dark};
+      color: ${({ theme }) => theme.colors.dark};
       top: -35px;
     }
 

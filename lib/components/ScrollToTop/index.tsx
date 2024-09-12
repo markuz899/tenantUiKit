@@ -3,7 +3,6 @@ import styled, { useTheme } from "styled-components";
 import Icon from "../Icon";
 
 const ScrollToTop: React.FC = () => {
-
   const theme = useTheme();
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -68,11 +67,11 @@ const Scroll = styled.div<ScrollProps>`
   opacity: 0;
   width: 50px;
   height: 50px;
-  border-radius: ${({theme}) => theme.spaces.space1};
-  background: ${({theme}) => theme.colors.primaryDark};
+  border-radius: ${({ theme }) => theme.spaces.space1};
+  background: ${({ theme }) => theme.colors.primaryDark};
   position: fixed;
-  bottom: ${({theme}) => theme.spaces.space6};
-  right: ${({theme}) => theme.spaces.space6};
+  bottom: ${({ theme }) => theme.spaces.space6};
+  right: ${({ theme }) => theme.spaces.space6};
   animation: ${(p) => (p.$isVisible ? "fadeIn" : "fadeOut")} 700ms ease-in 0.5s
     both;
   cursor: pointer;

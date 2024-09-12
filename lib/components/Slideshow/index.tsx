@@ -35,7 +35,6 @@ const Slideshow: React.FC<SlideshowProps> = ({
   clickInside,
   withDot = false,
 }) => {
-
   const theme = useTheme();
 
   const { isSmall } = useBreakpoints();
@@ -203,8 +202,9 @@ const Box = styled.div`
   flex-direction: column;
   width: 800px;
   height: 100%;
-  background: ${({theme}) => theme.colors.black};
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  background: ${({ theme }) => theme.colors.black};
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     min-width: 100%;
     width: 100%;
   }
@@ -219,7 +219,8 @@ const Slides = styled.div<{ width?: number; height?: number }>`
   min-height: 500px;
   height: ${(props) =>
     props.height ? `${props.height}px` : "calc(100vh - 70px)"};
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     width: 100%;
     height: 600px;
   }
@@ -234,7 +235,8 @@ const ContainerDot = styled.div`
   justify-content: space-evenly;
   padding-left: 50px;
   max-width: 500px;
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     padding-left: 0;
   }
 `;
@@ -244,24 +246,24 @@ const Content = styled.div`
   width: 100%;
   bottom: 0;
   left: 0;
-  padding: ${({theme}) => theme.spaces.space4};
+  padding: ${({ theme }) => theme.spaces.space4};
   text-align: left;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   .title {
     display: flex;
     h2 {
-      color: ${({theme}) => theme.colors.white};
-      font-size: ${({theme}) => theme.font.size.big};
+      color: ${({ theme }) => theme.colors.white};
+      font-size: ${({ theme }) => theme.font.size.big};
       line-height: 1;
     }
   }
   .description {
-    margin-top: ${({theme}) => theme.spaces.space3};
+    margin-top: ${({ theme }) => theme.spaces.space3};
     p {
-      margin: ${({theme}) => theme.spaces.space1};
-      font-size: ${({theme}) => theme.font.size.large};
-      color: ${({theme}) => theme.colors.white};
+      margin: ${({ theme }) => theme.spaces.space1};
+      font-size: ${({ theme }) => theme.font.size.large};
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 `;
@@ -276,8 +278,8 @@ const Slide = styled.div.attrs(({ left }: any) => ({ style: { left } }))<{
   flex-shrink: 0;
   transition: all 0.7s cubic-bezier(0.86, 0, 0.07, 1);
   background: linear-gradient(
-      ${({theme}) => theme.colors.primary}60,
-      ${({theme}) => theme.colors.primary}60
+      ${({ theme }) => theme.colors.primary}60,
+      ${({ theme }) => theme.colors.primary}60
     ),
     url(${(props) => props.src});
   background-position: center;
@@ -286,10 +288,10 @@ const Slide = styled.div.attrs(({ left }: any) => ({ style: { left } }))<{
 
 const Container = styled.div`
   width: 100%;
-  bottom: ${({theme}) => theme.spaces.space2};
+  bottom: ${({ theme }) => theme.spaces.space2};
   & > div {
     margin: auto;
-    max-width: ${({theme}) => theme.container};
+    max-width: ${({ theme }) => theme.container};
     padding: 10px 0px;
   }
   &.slideshow-dot {
@@ -297,9 +299,10 @@ const Container = styled.div`
     left: 20px;
     bottom: 20px;
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     &.slideshow-dot {
-      bottom: ${({theme}) => theme.spaces.space4};
+      bottom: ${({ theme }) => theme.spaces.space4};
     }
   }
 `;
@@ -319,11 +322,19 @@ const Dots = styled.div`
 
 const Dot = styled.div<{ $active: boolean }>`
   color: ${(props) =>
-    props.$active ? ({theme}) => theme.colors.primary : ({theme}) => theme.colors.white};
-  padding: ${({theme}) => theme.spaces.space3} ${({theme}) => theme.spaces.space2};
+    props.$active
+      ? ({ theme }) => theme.colors.primary
+      : ({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spaces.space3}
+    ${({ theme }) => theme.spaces.space2};
   border-bottom: 2px solid
-    ${(props) => (props.$active ? ({theme}) => theme.colors.primary : ({theme}) => theme.colors.white)};
+    ${(props) =>
+      props.$active
+        ? ({ theme }) => theme.colors.primary
+        : ({ theme }) => theme.colors.white};
   font-size: ${(props) =>
-    props.$active ? ({theme}) => theme.font.size.normal : ({theme}) => theme.font.size.mini};
+    props.$active
+      ? ({ theme }) => theme.font.size.normal
+      : ({ theme }) => theme.font.size.mini};
   cursor: pointer;
 `;

@@ -19,9 +19,8 @@ const Modal: React.FC<ModalProps> = ({
   rightScreen,
   fluid,
   disableOverflow = false,
-  portalId = "root-modal"
+  portalId = "root-modal",
 }) => {
-
   const theme = useTheme();
 
   const [visible, setVisible] = useState(isVisible);
@@ -78,11 +77,12 @@ const Modal: React.FC<ModalProps> = ({
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
-                    console.log('event', e)
+                    console.log("event", e);
                     if (e.key === "Escape" || e.key === " ") {
                       close();
                     }
-                  }}>
+                  }}
+                >
                   <Icon name="close" color={theme.colors.primary} />
                 </div>
               )}
@@ -109,7 +109,8 @@ export default Modal;
 
 const Destiny = styled.div<{ $fluid?: boolean }>`
   display: ${(p) => (p.$fluid ? "block" : "inline-block")};
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
   }
 `;
 
@@ -124,13 +125,13 @@ const Root = styled.div<ModalRootProps>`
   min-height: 100svh;
   z-index: 2100;
   overflow: scroll;
-  background: ${({theme}) => theme.colors.primary}8a;
+  background: ${({ theme }) => theme.colors.primary}8a;
   box-sizing: border-box;
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${({theme}) => theme.spaces.space4};
+  padding: ${({ theme }) => theme.spaces.space4};
   height: 100%;
   ${(p) => p.$fullScreen && fullRoot};
   ${(p) => (p.rightScreen ? right : normal)};
@@ -154,10 +155,10 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${({theme}) => theme.spaces.space4};
+  margin-bottom: ${({ theme }) => theme.spaces.space4};
   h2 {
     text-align: center;
-    font-size: ${({theme}) => theme.font.size.medium};
+    font-size: ${({ theme }) => theme.font.size.medium};
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -169,9 +170,10 @@ const Header = styled.div`
     right: 30px;
     cursor: pointer;
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     h2 {
-      font-size: ${({theme}) => theme.font.size.normal};
+      font-size: ${({ theme }) => theme.font.size.normal};
     }
   }
 `;
@@ -179,16 +181,17 @@ const Header = styled.div`
 const Content = styled.div<ModalContentProps>`
   position: relative;
   transition: 1s;
-  padding: ${({$noTitle, theme}) => ($noTitle ? "none" : theme.spaces.space4)};
-  background: ${({theme}) => theme.colors.white};
-  border-radius: ${({theme}) => theme.spaces.space3};
+  padding: ${({ $noTitle, theme }) =>
+    $noTitle ? "none" : theme.spaces.space4};
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.spaces.space3};
   height: ${(props) => props.size[1]}px;
   width: ${(props) => `${props.size[0]}px` || "auto"};
-  box-shadow: ${({theme}) => theme.extra.shadow};
+  box-shadow: ${({ theme }) => theme.extra.shadow};
   justify-self: center;
   align-self: center;
   flex-basis: auto;
-  z-index: ${({theme}) => theme.zIndex.zIndex1};
+  z-index: ${({ theme }) => theme.zIndex.zIndex1};
   overflow: ${(props) => (props.$disableOverflow ? "none" : "scroll")};
   ${(p) => p.$fullScreen && fullContent};
   ${(p) => (p.rightScreen ? rightMode : normalMode)};
@@ -198,13 +201,14 @@ const Content = styled.div<ModalContentProps>`
   &::-webkit-scrollbar {
     display: none;
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     width: 100%;
   }
 `;
 
 const normalMode = css`
-  box-shadow: ${({theme}) => theme.extra.shadow};
+  box-shadow: ${({ theme }) => theme.extra.shadow};
 `;
 
 const rightMode = css`

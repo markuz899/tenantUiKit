@@ -10,7 +10,6 @@ const ReadMore = ({
   max?: number;
   active?: boolean;
 }) => {
-
   const theme = useTheme();
 
   const [isReadMore, setIsReadMore] = useState(active);
@@ -22,7 +21,7 @@ const ReadMore = ({
     <ReadStyle>
       {isReadMore ? text.slice(0, max) : text}
       {text.length > max && (
-        <span 
+        <span
           className="text-primary"
           onClick={toggleReadMore}
           role="button"
@@ -31,7 +30,8 @@ const ReadMore = ({
             if (e.key === "Enter" || e.key === " ") {
               toggleReadMore();
             }
-          }}>
+          }}
+        >
           {isReadMore ? "...leggi di più" : " ...mostra meno"}
         </span>
       )}

@@ -14,7 +14,6 @@ const QuantitySelect: React.FC<QuantitySelectProps> = ({
   onDecrement,
   width,
 }) => {
-
   const theme = useTheme();
 
   const [defaultValue, setDefaultValue] = useState<number>(value || 1);
@@ -108,26 +107,26 @@ const StyledQuantity = styled.div<StyledQuantityProps>`
     &.auto {
       width: auto;
       &.left {
-        margin-right: ${({theme}) => theme.spaces.space4};
+        margin-right: ${({ theme }) => theme.spaces.space4};
       }
       &.right {
-        margin-left: ${({theme}) => theme.spaces.space4};
+        margin-left: ${({ theme }) => theme.spaces.space4};
       }
     }
     input[type="text"] {
-      border-radius: ${({theme}) => theme.extra.radiusBig};
+      border-radius: ${({ theme }) => theme.extra.radiusBig};
       width: 100%;
       height: 40px;
       border: none;
       text-align: center;
       padding: 0;
       flex-grow: 1;
-      font-size: ${({theme}) => theme.font.size.normal};
-      background: ${({theme}) => theme.colors.white};
-      border: 2px solid ${({theme}) => theme.colors.primary};
+      font-size: ${({ theme }) => theme.font.size.normal};
+      background: ${({ theme }) => theme.colors.white};
+      border: 2px solid ${({ theme }) => theme.colors.primary};
       &:disabled {
-        background: ${({theme}) => theme.colors.greyIcon};
-        color: ${({theme}) => theme.colors.dark};
+        background: ${({ theme }) => theme.colors.greyIcon};
+        color: ${({ theme }) => theme.colors.dark};
       }
       &:focus {
         outline: none;

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled, { useTheme,  keyframes } from "styled-components";
+import styled, { useTheme, keyframes } from "styled-components";
 import { DropdownProps } from "./interface";
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -16,9 +16,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   topPosition,
   className,
 }) => {
-
   const theme = useTheme();
-  
+
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState<React.CSSProperties>({});
   const target = useRef<HTMLDivElement>(null);
@@ -31,7 +30,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   const setDropdownPosition = () => {
     if (target.current && dropdown.current) {
       const rect = target.current.getBoundingClientRect();
-      const maxWidth = (target.current.firstChild as HTMLElement)?.getBoundingClientRect().width;
+      const maxWidth = (
+        target.current.firstChild as HTMLElement
+      )?.getBoundingClientRect().width;
       const p: React.CSSProperties = {
         left: leftPosition || 0,
         right: undefined,
@@ -165,8 +166,8 @@ const RenderDrop = styled.div.attrs(({ position }: any) => ({
     p.$fluid
       ? "width: 100%"
       : p.$width
-      ? `width: ${p.$width}px`
-      : "width: fit-content"};
+        ? `width: ${p.$width}px`
+        : "width: fit-content"};
   height: 100%;
 `;
 
@@ -183,12 +184,12 @@ const Drop = styled.div<{
   size: number;
   $fluid: boolean;
 }>`
-  border-radius: ${({theme}) => theme.extra.radiusBig};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
   position: absolute;
   box-shadow: 0px 2px 4px #393e4629;
   background: white;
-  margin: ${({theme}) => theme.spaces.space3} 0;
-  font-size: ${({theme}) => theme.font.size.tiny};
+  margin: ${({ theme }) => theme.spaces.space3} 0;
+  font-size: ${({ theme }) => theme.font.size.tiny};
   min-width: 100%;
   ${(props) => props.$fluid && "width: 100%;"}
   &::-webkit-scrollbar {
@@ -204,7 +205,7 @@ const Arrow = styled.div<{ top?: number }>`
   width: 12px;
   height: 12px;
   transform: rotate(225deg);
-  background: ${({theme}) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   border-width: 1px;
   border-style: solid;
   border-color: transparent ${(props) => props.theme.body}

@@ -12,7 +12,6 @@ const Toggle: React.FC<ToggleProps> = ({
   label,
   disabled = false,
 }) => {
-
   const theme = useTheme();
 
   const [state, setState] = useState(checked || false);
@@ -91,23 +90,23 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   p {
-    margin-left: ${({theme}) => theme.spaces.space2};
-    color: ${({theme}) => theme.colors.white};
-    font-size: ${({theme}) => theme.font.size.tiny};
+    margin-left: ${({ theme }) => theme.spaces.space2};
+    color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.font.size.tiny};
   }
 `;
 
 const Slider = styled.label<{ $disabled: boolean }>`
   position: relative;
   display: inline-block;
-  width: ${({theme}) => theme.spaces.space10};
-  height: ${({theme}) => theme.spaces.space5};
+  width: ${({ theme }) => theme.spaces.space10};
+  height: ${({ theme }) => theme.spaces.space5};
   > input {
     opacity: 0;
     width: 0;
     height: 0;
     &:disabled {
-      background: ${({theme}) => theme.colors.greyIcon};
+      background: ${({ theme }) => theme.colors.greyIcon};
     }
   }
 `;
@@ -119,10 +118,10 @@ const SliderInput = styled.input<{ $colorBg?: string; $disabled: boolean }>`
   }
   &:checked + .sliderBg {
     background-color: ${(props) => props.$colorBg};
-    border: 2px solid ${({theme}) => theme.colors.primaryDark};
+    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
     &:before {
       transform: translateX(25px);
-      background-color: ${({theme}) => theme.colors.white};
+      background-color: ${({ theme }) => theme.colors.white};
     }
   }
 `;
@@ -141,11 +140,14 @@ const SliderSpan = styled.span<{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${({theme}) => theme.colors.greyIcon};
+  background-color: ${({ theme }) => theme.colors.greyIcon};
   transition: 0.4s;
-  border-radius: ${({theme}) => theme.spaces.space3};
+  border-radius: ${({ theme }) => theme.spaces.space3};
   border: 2px solid
-    ${(p) => (p.$disabled ? ({theme}) => theme.colors.greyIcon : ({theme}) => theme.colors.greyIcon)};
+    ${(p) =>
+      p.$disabled
+        ? ({ theme }) => theme.colors.greyIcon
+        : ({ theme }) => theme.colors.greyIcon};
   opacity: 1;
   &:before {
     position: absolute;
@@ -154,25 +156,25 @@ const SliderSpan = styled.span<{
     width: 19px;
     left: 1px;
     bottom: 1px;
-    background-color: ${({theme}) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
     transition: 0.4s;
     border-radius: 50%;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
   }
   &:hover {
     border-color: ${({ $disabled }) =>
-      $disabled ? "inherit" : ({theme}) => theme.colors.primaryDark};
+      $disabled ? "inherit" : ({ theme }) => theme.colors.primaryDark};
   }
   &.clicked {
     transition: none;
-    box-shadow: 0 0 0 3px ${({theme}) => theme.colors.primary}60;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}60;
   }
 `;
 
 const Label = styled.p`
-  margin-left: ${({theme}) => theme.spaces.space2};
-  color: ${({theme}) => theme.colors.white};
-  font-size: ${({theme}) => theme.font.size.tiny};
+  margin-left: ${({ theme }) => theme.spaces.space2};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.font.size.tiny};
 `;
 
 export default Toggle;

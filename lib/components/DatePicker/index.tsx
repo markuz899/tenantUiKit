@@ -33,7 +33,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
   startMonth,
   endMonth,
 }) => {
-
   const theme = useTheme();
 
   const [onlyRead, setOnlyRead] = useState(readOnly);
@@ -69,7 +68,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           },
         });
     },
-    []
+    [],
   );
 
   // multiple handler
@@ -180,7 +179,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           break;
       }
     },
-    [mode]
+    [mode],
   );
 
   const renderLabel = useMemo(() => {
@@ -263,8 +262,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
             mode === "single"
               ? selected
               : mode === "multiple"
-              ? multiSelected
-              : rangeSelected
+                ? multiSelected
+                : rangeSelected
           }
           footer={mode === "single" && <RenderFooter />}
         />
@@ -280,7 +279,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       excludeDisabled,
       min,
       max,
-    ]
+    ],
   );
 
   return (
@@ -294,7 +293,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       />
     </>
   );
-}
+};
 
 export default DatePicker;
 
@@ -306,43 +305,43 @@ const Target = styled.div`
 `;
 
 const ContentPicker = styled.div`
-  padding: ${({theme}) => theme.spaces.space2};
+  padding: ${({ theme }) => theme.spaces.space2};
 `;
 
 const PickerStyle = styled(DayPicker)`
   .rdp-range_middle.rdp-selected {
-    background-color: ${({theme}) => theme.colors.primaryLight}40;
+    background-color: ${({ theme }) => theme.colors.primaryLight}40;
   }
   .rdp-range_start.rdp-selected {
-    background: ${`linear-gradient(90deg, transparent 50%, ${({theme}: any) => theme.colors.primaryLight}40 50%)`};
+    background: ${`linear-gradient(90deg, transparent 50%, ${({ theme }: any) => theme.colors.primaryLight}40 50%)`};
   }
   .rdp-range_end.rdp-selected {
-    background: ${`linear-gradient(90deg, ${({theme}: any) => theme.colors.primaryLight}40 50%, transparent 50%)`};
+    background: ${`linear-gradient(90deg, ${({ theme }: any) => theme.colors.primaryLight}40 50%, transparent 50%)`};
   }
   .rdp-range_start.rdp-selected,
   .rdp-range_end.rdp-selected {
     button {
-      border-color: ${({theme}) => theme.colors.primaryLight};
-      background-color: ${({theme}) => theme.colors.primary};
+      border-color: ${({ theme }) => theme.colors.primaryLight};
+      background-color: ${({ theme }) => theme.colors.primary};
     }
   }
   .rdp-selected {
     button {
-      border-color: ${({theme}) => theme.colors.primary};
+      border-color: ${({ theme }) => theme.colors.primary};
     }
   }
   .rdp-today {
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
   .rdp-caption_label {
     svg {
-      fill: ${({theme}) => theme.colors.primary};
+      fill: ${({ theme }) => theme.colors.primary};
     }
   }
   .rdp-nav {
     button {
       svg {
-        fill: ${({theme}) => theme.colors.primary};
+        fill: ${({ theme }) => theme.colors.primary};
       }
     }
   }

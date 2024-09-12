@@ -29,7 +29,6 @@ const Tabs: React.FC<TabsProps> = ({
   isSmall,
   defaultValue,
 }) => {
-
   const theme = useTheme();
 
   const tabRef = useRef<HTMLDivElement>(null);
@@ -111,11 +110,11 @@ const Flex = styled.div`
 
 const Buttons = styled.div`
   position: relative;
-  background: ${({theme}) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   display: inline-block;
-  border-radius: ${({theme}) => theme.extra.radiusBig};
-  border: 2px solid ${({theme}) => theme.colors.greyIcon};
-  height: ${({theme}) => theme.spaces.space9};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
+  border: 2px solid ${({ theme }) => theme.colors.greyIcon};
+  height: ${({ theme }) => theme.spaces.space9};
   .selector {
     height: 100%;
     display: inline-block;
@@ -125,10 +124,11 @@ const Buttons = styled.div`
     z-index: 1;
     border-radius: 6px;
     transition-duration: 0.6s;
-    background: ${({theme}) => theme.colors.primary};
-    border: 2px solid ${({theme}) => theme.colors.primaryDark};
+    background: ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
   }
 `;
 
@@ -138,7 +138,8 @@ const Tab = styled.button<{ $iconColor: string }>`
   border: none;
   background: transparent;
   color: ${({ theme }) => theme.text};
-  padding: ${({theme}) => theme.spaces.space2} ${({theme}) => theme.spaces.space4};
+  padding: ${({ theme }) => theme.spaces.space2}
+    ${({ theme }) => theme.spaces.space4};
   position: relative;
   z-index: 1;
   transition-duration: 0.6s;
@@ -147,8 +148,9 @@ const Tab = styled.button<{ $iconColor: string }>`
     p,
     svg {
       transition-delay: 0.3s;
-      color: ${({theme}) => theme.colors.white};
-      fill: ${({$iconColor, theme}) => ($iconColor ? $iconColor : theme.colors.white)};
+      color: ${({ theme }) => theme.colors.white};
+      fill: ${({ $iconColor, theme }) =>
+        $iconColor ? $iconColor : theme.colors.white};
     }
   }
   .d-flex {
@@ -156,26 +158,29 @@ const Tab = styled.button<{ $iconColor: string }>`
     align-items: center;
     p {
       line-height: 1;
-      font-size: ${({theme}) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.tiny};
     }
     span {
       margin-left: 5px;
-      font-size: ${({theme}) => theme.font.size.minor};
-      color: ${({theme}) => theme.colors.white};
+      font-size: ${({ theme }) => theme.font.size.minor};
+      color: ${({ theme }) => theme.colors.white};
     }
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
-    padding: ${({theme}) => theme.spaces.space2};
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spaces.space2};
   }
 `;
 
 const Box = styled.div`
-  box-shadow: ${({theme}) => theme.extra.shadow};
-  border-radius: ${({theme}) => theme.extra.radiusBig};
-  padding: ${({theme}) => theme.spaces.space1} ${({theme}) => theme.spaces.space3} ${({theme}) => theme.spaces.space3};
-  background: ${({theme}) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.extra.shadow};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
+  padding: ${({ theme }) => theme.spaces.space1}
+    ${({ theme }) => theme.spaces.space3} ${({ theme }) => theme.spaces.space3};
+  background: ${({ theme }) => theme.colors.white};
   width: 100%;
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     padding: 0;
     border: 0;
     box-shadow: none;

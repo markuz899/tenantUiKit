@@ -8,7 +8,6 @@ const Accordion: React.FC<AccordionProps> = ({
   inline = false,
   multipleOpen = false,
 }) => {
-
   const theme = useTheme();
 
   const [clicked, setClicked] = useState<number | null>(null);
@@ -39,7 +38,7 @@ const Accordion: React.FC<AccordionProps> = ({
         return clickeds.includes(index);
       }
     },
-    [clicked, clickeds, multipleOpen]
+    [clicked, clickeds, multipleOpen],
   );
 
   return (
@@ -65,7 +64,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   active,
   onToggle,
 }) => {
-
   const theme = useTheme();
 
   const { question, answer } = faq;
@@ -111,17 +109,18 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
     .button {
       position: relative;
       width: 100%;
-      font-size: ${({theme}) => theme.font.size.normal};
-      color: ${({theme}) => theme.colors.dark};
+      font-size: ${({ theme }) => theme.font.size.normal};
+      color: ${({ theme }) => theme.colors.dark};
       text-transform: uppercase;
       text-align: left;
-      border: 2px solid ${({theme}) => theme.colors.dark};
-      border-radius: ${({theme}) => theme.extra.radius};
+      border: 2px solid ${({ theme }) => theme.colors.dark};
+      border-radius: ${({ theme }) => theme.extra.radius};
       background: ${({ theme }) => theme.body};
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: ${({theme}) => theme.spaces.space5} ${({theme}) => theme.spaces.space6};
+      padding: ${({ theme }) => theme.spaces.space5}
+        ${({ theme }) => theme.spaces.space6};
       z-index: 2;
       transition: all 0.5s;
       cursor: pointer;
@@ -130,15 +129,16 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
       }
       &.active {
         p {
-          color: ${({theme}) => theme.colors.primary};
+          color: ${({ theme }) => theme.colors.primary};
         }
       }
     }
     .answer {
-      color: ${({theme}) => theme.colors.dark};
-      font-size: ${({theme}) => theme.font.size.normal};
-      padding: ${({theme}) => theme.spaces.space4} ${({theme}) => theme.spaces.space6};
-      background: ${({theme}) => theme.colors.greyIcon};
+      color: ${({ theme }) => theme.colors.dark};
+      font-size: ${({ theme }) => theme.font.size.normal};
+      padding: ${({ theme }) => theme.spaces.space4}
+        ${({ theme }) => theme.spaces.space6};
+      background: ${({ theme }) => theme.colors.greyIcon};
     }
 
     .answer_wrapper {
@@ -149,20 +149,21 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
       transition: height ease 0.2s;
       text-align: left;
       z-index: 1;
-      border: 2px solid ${({theme}) => theme.colors.dark};
-      border-bottom-left-radius: ${({theme}) => theme.extra.radius};
-      border-bottom-right-radius: ${({theme}) => theme.extra.radius};
+      border: 2px solid ${({ theme }) => theme.colors.dark};
+      border-bottom-left-radius: ${({ theme }) => theme.extra.radius};
+      border-bottom-right-radius: ${({ theme }) => theme.extra.radius};
     }
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     .accordion_item {
       button {
         p {
-          font-size: ${({theme}) => theme.font.size.tiny};
+          font-size: ${({ theme }) => theme.font.size.tiny};
         }
       }
       .answer {
-        font-size: ${({theme}) => theme.font.size.tiny};
+        font-size: ${({ theme }) => theme.font.size.tiny};
       }
     }
   }
@@ -170,8 +171,9 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
 
 const InlineStyle = css`
   display: flex;
-  gap: ${({theme}) => theme.spaces.space2};
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  gap: ${({ theme }) => theme.spaces.space2};
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     flex-direction: column;
     gap: 0;
   }

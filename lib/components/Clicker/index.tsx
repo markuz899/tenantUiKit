@@ -1,9 +1,7 @@
 import { useState } from "react";
 import styled, { useTheme } from "styled-components";
 
-
 const Clicker = ({ children, radius }: any) => {
-
   const theme = useTheme();
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -37,8 +35,9 @@ export default Clicker;
 
 const ClickDom = styled.div<any>`
   &.clicked {
-    border-radius: ${({$radius, theme}) => ($radius ? theme.extra.radius : "none")};
+    border-radius: ${({ $radius, theme }) =>
+      $radius ? theme.extra.radius : "none"};
     transition: none;
-    box-shadow: 0 0 0 3px ${({theme}) => theme.colors.primary}60;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}60;
   }
 `;

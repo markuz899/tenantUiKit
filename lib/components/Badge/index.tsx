@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css, useTheme } from "styled-components";
 import Icon from "../Icon";
 import { BadgeProps } from "./interface";
-import { colorBasedOnBg } from "../../utils/utils"
+import { colorBasedOnBg } from "../../utils/utils";
 import { BASE_COLOR } from "../../../theme";
 
 const COLOR_ICON = (theme: any) => ({
@@ -21,7 +21,6 @@ const Badge: React.FC<BadgeProps> = ({
   iconClose = true,
   kind = "ghost",
 }) => {
-
   const theme = useTheme();
 
   const handleClick = () => {
@@ -35,15 +34,15 @@ const Badge: React.FC<BadgeProps> = ({
       <div className="text">{label || children}</div>
       {iconClose && (
         <div
-        className="icon"
-        onClick={handleClick}
-        tabIndex={0}
-        role="button"
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            handleClick();
-          }
-        }}
+          className="icon"
+          onClick={handleClick}
+          tabIndex={0}
+          role="button"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              handleClick();
+            }
+          }}
         >
           <Icon
             name="close"
@@ -61,32 +60,32 @@ export default Badge;
 
 const COLORS = {
   warning: css`
-    background: ${({theme}) => theme.colors.warning};
-    border: 2px solid ${({theme}) => theme.colors.warningDark};
+    background: ${({ theme }) => theme.colors.warning};
+    border: 2px solid ${({ theme }) => theme.colors.warningDark};
   `,
   success: css`
-    background: ${({theme}) => theme.colors.success};
-    border: 2px solid ${({theme}) => theme.colors.successDark};
+    background: ${({ theme }) => theme.colors.success};
+    border: 2px solid ${({ theme }) => theme.colors.successDark};
   `,
   error: css`
-    background: ${({theme}) => theme.colors.error};
-    border: 2px solid ${({theme}) => theme.colors.errorDark};
+    background: ${({ theme }) => theme.colors.error};
+    border: 2px solid ${({ theme }) => theme.colors.errorDark};
     .text {
-      color: ${({theme}) => theme.colors.white}!important;
+      color: ${({ theme }) => theme.colors.white}!important;
     }
   `,
   info: css`
-    background: ${({theme}) => theme.colors.primary};
-    border: 2px solid ${({theme}) => theme.colors.primaryDark};
+    background: ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
     .text {
-      color: ${({theme}) => theme.colors.white}!important;
+      color: ${({ theme }) => theme.colors.white}!important;
     }
   `,
   ghost: css`
-    background: ${({theme}) => theme.colors.white};
-    border: 2px solid ${({theme}) => theme.colors.greyIcon};
+    background: ${({ theme }) => theme.colors.white};
+    border: 2px solid ${({ theme }) => theme.colors.greyIcon};
     .text {
-      color: ${({theme}) => theme.colors.dark}!important;
+      color: ${({ theme }) => theme.colors.dark}!important;
     }
   `,
 };
@@ -99,30 +98,32 @@ const StyledBadge = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${({theme}) => theme.colors.primary};
-  padding: ${({theme}) => theme.spaces.space2} ${({theme}) => theme.spaces.space4};
-  border: 2px solid ${({theme}) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
+  padding: ${({ theme }) => theme.spaces.space2}
+    ${({ theme }) => theme.spaces.space4};
+  border: 2px solid ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
   text-transform: uppercase;
-  margin-bottom: ${({theme}) => theme.spaces.space2};
+  margin-bottom: ${({ theme }) => theme.spaces.space2};
   ${(props) => COLORS[props.$kind]};
   .text {
-    color: ${({$kind, theme}) =>
+    color: ${({ $kind, theme }) =>
       colorBasedOnBg(BASE_COLOR[$kind] || theme.colors.white)};
-    font-size: ${({theme}) => theme.font.size.minor};
+    font-size: ${({ theme }) => theme.font.size.minor};
   }
   .icon {
     display: flex;
     align-items: center;
     cursor: pointer;
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
     white-space: nowrap;
     flex: 1 0 35%;
     padding: 8px;
-    margin-bottom: ${({theme}) => theme.spaces.space1};
+    margin-bottom: ${({ theme }) => theme.spaces.space1};
     .text {
-      font-size: ${({theme}) => theme.font.size.small};
+      font-size: ${({ theme }) => theme.font.size.small};
     }
   }
 `;

@@ -17,7 +17,6 @@ const Pagination: React.FC<PaginationProps> = ({
   iSmallScreen = false,
   onChangePage,
 }) => {
-
   const theme = useTheme();
 
   const limit = iSmallScreen ? 5 : 9;
@@ -143,11 +142,11 @@ const Page = styled.button<{ active?: boolean }>`
   margin: 4px;
   height: 32px;
   min-width: 32px;
-  background: ${({active, theme}) =>
+  background: ${({ active, theme }) =>
     active ? theme.colors.primary : theme.colors.white};
-  color: ${({active, theme}) =>
+  color: ${({ active, theme }) =>
     active ? theme.colors.white : theme.colors.primary};
-  border: 1px solid ${({theme}) => theme.colors.greyIcon};
+  border: 1px solid ${({ theme }) => theme.colors.greyIcon};
   align-items: center;
   border-radius: 3px;
   cursor: pointer;
@@ -163,8 +162,8 @@ const Dots = styled(Page)`
 
 const Count = styled.span`
   align-items: center;
-  color: ${({theme}) => theme.colors.grey};
-  font-size: ${({theme}) => theme.font.size.mini};
-  font-weight: ${({theme}) => theme.font.weight.medium};
+  color: ${({ theme }) => theme.colors.grey};
+  font-size: ${({ theme }) => theme.font.size.mini};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
   margin: 4px;
 `;

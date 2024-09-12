@@ -25,7 +25,6 @@ const Table: React.FC<TableProps> = ({
     disabledValue: true,
   },
 }: any) => {
-
   const theme = useTheme();
 
   const {
@@ -64,7 +63,9 @@ const Table: React.FC<TableProps> = ({
                 return (
                   !disableSelectAll && (
                     <Checkbox
-                      onChange={(d: any) => props.toggleAllRowsSelected(d.value)}
+                      onChange={(d: any) =>
+                        props.toggleAllRowsSelected(d.value)
+                      }
                       checked={checked}
                     />
                   )
@@ -80,7 +81,9 @@ const Table: React.FC<TableProps> = ({
                 return (
                   <Cell>
                     <Checkbox
-                      onChange={(d: any) => props.row.toggleRowSelected(d.value)}
+                      onChange={(d: any) =>
+                        props.row.toggleRowSelected(d.value)
+                      }
                       checked={checked}
                       disabled={disabled}
                     />
@@ -123,7 +126,7 @@ const Table: React.FC<TableProps> = ({
         }
         return [...cols];
       });
-    }
+    },
   ) as any;
 
   return (
@@ -147,7 +150,7 @@ const Table: React.FC<TableProps> = ({
                       // eslint-disable-next-line
                       <th
                         {...column.getHeaderProps(
-                          column.getSortByToggleProps()
+                          column.getSortByToggleProps(),
                         )}
                       >
                         <div>
@@ -227,10 +230,10 @@ export default Table;
 const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  border-radius: ${({theme}) => theme.extra.radius};
+  border-radius: ${({ theme }) => theme.extra.radius};
   overflow: hidden;
   tr {
-    border: 1px solid ${({theme}) => theme.colors.borderTable};
+    border: 1px solid ${({ theme }) => theme.colors.borderTable};
   }
   td {
     background: ${({ theme }) => theme.body};
@@ -239,9 +242,9 @@ const StyledTable = styled.table`
 `;
 
 const Thead = styled.thead`
-  border: 1px solid ${({theme}) => theme.colors.borderTable};
-  font-size: ${({theme}) => theme.font.size.minor};
-  color: ${({theme}) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.borderTable};
+  font-size: ${({ theme }) => theme.font.size.minor};
+  color: ${({ theme }) => theme.colors.grey};
   text-align: left;
   background: ${({ theme }) => theme.body};
   th {
@@ -251,12 +254,12 @@ const Thead = styled.thead`
       align-items: flex-start;
       justify-content: space-between;
       span {
-        width: ${({theme}) => theme.spaces.space2};
-        height: ${({theme}) => theme.spaces.space2};
+        width: ${({ theme }) => theme.spaces.space2};
+        height: ${({ theme }) => theme.spaces.space2};
       }
     }
     &:last-child {
-      padding-right: ${({theme}) => theme.spaces.space3};
+      padding-right: ${({ theme }) => theme.spaces.space3};
     }
   }
 `;
@@ -294,7 +297,7 @@ const Radio = styled.div<{ $active: boolean }>`
   align-items: center;
   cursor: pointer;
   .selector {
-    border: 1px solid ${({theme}) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -303,7 +306,7 @@ const Radio = styled.div<{ $active: boolean }>`
     border-radius: 50%;
     transition: all 0.3s ease;
     border: 1px solid
-      ${({$active, theme}) =>
+      ${({ $active, theme }) =>
         $active ? theme.colors.primary : theme.colors.greyIcon};
     &:hover {
       opacity: 0.8;
@@ -313,13 +316,14 @@ const Radio = styled.div<{ $active: boolean }>`
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: ${({$active, theme}) =>
+      background: ${({ $active, theme }) =>
         $active ? theme.colors.primary : "transparent"};
     }
   }
   span {
-    margin: 0 ${({theme}) => theme.spaces.space4} 0 ${({theme}) => theme.spaces.space3};
+    margin: 0 ${({ theme }) => theme.spaces.space4} 0
+      ${({ theme }) => theme.spaces.space3};
     display: inline-block;
-    font-size: ${({theme}) => theme.font.size.tiny};
+    font-size: ${({ theme }) => theme.font.size.tiny};
   }
 `;

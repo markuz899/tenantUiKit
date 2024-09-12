@@ -3,14 +3,13 @@ import { createPortal } from "react-dom";
 import styled, { keyframes, useTheme } from "styled-components";
 import { TooltipProps } from "./interface";
 
-const Tooltip: React.FC<TooltipProps> = ({ 
+const Tooltip: React.FC<TooltipProps> = ({
   content,
   children,
   className,
   flex = false,
-  portalId = "root-tooltip"
+  portalId = "root-tooltip",
 }) => {
-
   const theme = useTheme();
 
   const target: any = useRef<HTMLSpanElement>(null);
@@ -99,7 +98,7 @@ const Tooltip: React.FC<TooltipProps> = ({
             {content}
             <Arrow ref={arrow} />
           </Tip>,
-          ROOT_NODE
+          ROOT_NODE,
         )
       : null;
   };
@@ -158,8 +157,8 @@ export const Tip = styled.div`
   max-width: 300px;
   box-sizing: border-box;
   text-align: center;
-  background: ${({theme}) => theme.colors.white};
-  color: ${({theme}) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   z-index: 1000;

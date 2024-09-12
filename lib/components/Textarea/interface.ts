@@ -8,7 +8,7 @@ export interface TextareaProps {
   isError?: any;
   onChange?: (
     event: { value: any; name?: string; type?: string },
-    e: React.ChangeEvent<HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   message?: string;
   showPasswordIcon?: boolean;

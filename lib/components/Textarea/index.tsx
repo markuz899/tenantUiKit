@@ -37,9 +37,8 @@ const Textarea = forwardRef<TextareaRef, TextareaProps>(
       inputBgColor = "white",
       ...rest
     },
-    ref
+    ref,
   ) => {
-
     const theme = useTheme();
 
     const initialValue = defaultValue || value || "";
@@ -147,7 +146,7 @@ const Textarea = forwardRef<TextareaRef, TextareaProps>(
         {after}
       </Box>
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";
@@ -189,61 +188,62 @@ const Box = styled.div<{
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  min-height: ${({theme}) => theme.spaces.space9};
+  min-height: ${({ theme }) => theme.spaces.space9};
   background: ${(p) => p.$inputBgColor};
   width: 100%;
-  padding: 0 ${({theme}) => theme.spaces.space2};
+  padding: 0 ${({ theme }) => theme.spaces.space2};
   border: 2px solid
-    ${({isError, $focus, theme}) =>
+    ${({ isError, $focus, theme }) =>
       isError
         ? theme.colors.error
         : $focus
-        ? theme.colors.primary
-        : theme.colors.dark};
+          ? theme.colors.primary
+          : theme.colors.dark};
   border: 2px solid
-    ${({isError, $focus, theme}) =>
+    ${({ isError, $focus, theme }) =>
       isError
         ? theme.colors.error
         : $focus
-        ? theme.colors.primary
-        : theme.colors.borderComponent};
-  border-radius: ${({theme}) => theme.extra.radiusBig};
+          ? theme.colors.primary
+          : theme.colors.borderComponent};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
   textarea {
     box-sizing: border-box;
     background: transparent;
     width: 100%;
     border: 0;
-    min-height: ${({theme}) => theme.spaces.space7};
+    min-height: ${({ theme }) => theme.spaces.space7};
     padding: 0;
-    font-weight: ${({theme}) => theme.font.weight.medium};
-    font-size: ${({theme}) => theme.font.size.tiny};
-    transition: ${({theme}) => theme.extra.transition};
+    font-weight: ${({ theme }) => theme.font.weight.medium};
+    font-size: ${({ theme }) => theme.font.size.tiny};
+    transition: ${({ theme }) => theme.extra.transition};
     color: ${({ theme }) => theme.text};
-    color: ${({isError, theme}) => isError && theme.colors.error};
+    color: ${({ isError, theme }) => isError && theme.colors.error};
     margin-top: 4px;
     padding-top: ${({ $topPlaceholder }) =>
-      $topPlaceholder ? ({theme}) => theme.spaces.space3 : 0};
+      $topPlaceholder ? ({ theme }) => theme.spaces.space3 : 0};
     &:focus {
       outline: none;
     }
     &::placeholder {
-      color: ${({theme}) => theme.colors.lightGrey};
-      font-size: ${({theme}) => theme.font.size.tiny};
+      color: ${({ theme }) => theme.colors.lightGrey};
+      font-size: ${({ theme }) => theme.font.size.tiny};
     }
     &:-ms-textarea-placeholder {
       color: ${({ theme }) => theme.text};
-      font-size: ${({theme}) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.tiny};
     }
     &::-ms-textarea-placeholder {
       color: ${({ theme }) => theme.text};
-      font-size: ${({theme}) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.tiny};
     }
   }
   textarea + label,
   textarea:not([data-value="false"]) + label {
     transform: translateY(-20px) scale(0.9);
     background: ${(p) => p.$labelBgColor};
-    padding: 0 ${({theme}) => theme.spaces.space1} 0 ${({theme}) => theme.spaces.space1};
+    padding: 0 ${({ theme }) => theme.spaces.space1} 0
+      ${({ theme }) => theme.spaces.space1};
   }
   textarea:-webkit-autofill,
   textarea:-webkit-autofill:hover,
@@ -261,17 +261,19 @@ const Box = styled.div<{
   }
   .pointer {
     cursor: pointer;
-    font-size: ${({theme}) => theme.font.size.mini};
-    color: ${({theme}) => theme.colors.lightGrey};
+    font-size: ${({ theme }) => theme.font.size.mini};
+    color: ${({ theme }) => theme.colors.lightGrey};
   }
   .alertTooltip {
     margin-left: 3px;
   }
   &:hover {
-    transition: all ${({theme}) => theme.extra.transition};
+    transition: all ${({ theme }) => theme.extra.transition};
     border: 2px solid
       ${({ isError, $focus }) =>
-        isError ? ({theme}) => theme.colors.error : ({theme}) => theme.colors.primary};
+        isError
+          ? ({ theme }) => theme.colors.error
+          : ({ theme }) => theme.colors.primary};
   }
 `;
 const Container = styled.div`
@@ -279,10 +281,10 @@ const Container = styled.div`
   width: 100%;
 `;
 const After = styled.div`
-  margin-left: ${({theme}) => theme.spaces.space2};
+  margin-left: ${({ theme }) => theme.spaces.space2};
 `;
 const Before = styled.div`
-  margin-right: ${({theme}) => theme.spaces.space2};
+  margin-right: ${({ theme }) => theme.spaces.space2};
 `;
 const Label = styled.label<{
   $iconBefore?: string;
@@ -296,18 +298,18 @@ const Label = styled.label<{
   max-width: 100%;
   transform-origin: top left;
   margin-top: 8px;
-  transition: ${({theme}) => theme.extra.transitionFluid};
+  transition: ${({ theme }) => theme.extra.transitionFluid};
   pointer-events: none;
   padding: 0;
-  font-size: ${({theme}) => theme.font.size.normal};
-  color: ${({theme}) => theme.colors.grey};
+  font-size: ${({ theme }) => theme.font.size.normal};
+  color: ${({ theme }) => theme.colors.grey};
   background: ${({ $labelBgColor, theme }) => $labelBgColor || theme.bg};
-  border-radius: ${({theme}) => theme.extra.radiusBig};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
   span {
-    color: ${({theme}) => theme.colors.error};
+    color: ${({ theme }) => theme.colors.error};
   }
   .asterisk {
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
   &::before {
     content: "";
@@ -331,19 +333,19 @@ const Label = styled.label<{
     bottom: 0;
     right: 0;
     border-radius: inherit;
-    background-color: ${({$labelBgColor, $inputBgColor, theme}) =>
+    background-color: ${({ $labelBgColor, $inputBgColor, theme }) =>
       $labelBgColor
         ? $labelBgColor
         : $inputBgColor
-        ? $inputBgColor
-        : theme.colors.white};
+          ? $inputBgColor
+          : theme.colors.white};
   }
   .max {
-    margin-left: ${({theme}) => theme.spaces.space2};
-    color: ${({theme}) => theme.colors.grey};
-    font-size: ${({theme}) => theme.font.size.tiny};
+    margin-left: ${({ theme }) => theme.spaces.space2};
+    color: ${({ theme }) => theme.colors.grey};
+    font-size: ${({ theme }) => theme.font.size.tiny};
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
-    font-size: ${({theme}) => theme.font.size.tiny};
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: ${({ theme }) => theme.font.size.tiny};
   }
 `;

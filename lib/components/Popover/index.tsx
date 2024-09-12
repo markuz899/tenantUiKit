@@ -9,9 +9,8 @@ const Popover: React.FC<PopoverProps> = ({
   flex = false,
   renderTarget,
   renderContent,
-  portalId = "root-tooltip"
+  portalId = "root-tooltip",
 }) => {
-
   const theme = useTheme();
 
   const target = useRef<any>(null);
@@ -102,7 +101,7 @@ const Popover: React.FC<PopoverProps> = ({
             {renderContent && renderContent({ close })}
             <Arrow ref={arrow} />
           </Tip>,
-          ROOT_NODE
+          ROOT_NODE,
         )
       : null;
   };
@@ -143,8 +142,8 @@ export const Tip = styled.div`
   max-width: 300px;
   box-sizing: border-box;
   text-align: center;
-  background: ${({theme}) => theme.colors.white};
-  color: ${({theme}) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   z-index: 2200;

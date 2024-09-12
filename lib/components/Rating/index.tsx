@@ -20,7 +20,6 @@ const Rating = ({
   onChange,
   size = "30px",
 }: RatingProps) => {
-
   const theme = useTheme();
 
   const [totalStars, setTotalStars] = useState<number>(numberStar);

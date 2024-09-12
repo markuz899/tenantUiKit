@@ -1,6 +1,5 @@
 import styled, { css, useTheme } from "styled-components";
 const Loader = ({ isActive = true, debug = false, type = "spin" }: any) => {
-
   const theme = useTheme();
 
   return (
@@ -23,7 +22,7 @@ const LoadStyle = styled.div<{
   left: 0;
   width: 100%;
   height: 100svh;
-  background-image: ${`linear-gradient(120deg, ${({theme}: any) => theme.colors.primaryLight} 0%, ${({theme}: any) => theme.colors.primaryDark} 100%)`};
+  background-image: ${`linear-gradient(120deg, ${({ theme }: any) => theme.colors.primaryLight} 0%, ${({ theme }: any) => theme.colors.primaryDark} 100%)`};
   display: ${(p) => (p.$isActive ? "flex" : "none")};
   align-items: center;
   justify-content: center;
@@ -32,8 +31,8 @@ const LoadStyle = styled.div<{
 
 const spin = css`
   .spin {
-    border: 10px solid ${({theme}) => theme.colors.white};
-    border-top: 10px solid ${({theme}) => theme.colors.error};
+    border: 10px solid ${({ theme }) => theme.colors.white};
+    border-top: 10px solid ${({ theme }) => theme.colors.error};
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -62,7 +61,7 @@ const glue = css`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: ${({theme}) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.white};
     position: absolute;
     left: 0;
     top: 0;
@@ -90,24 +89,32 @@ const three = css`
     display: block;
     margin: 15px auto;
     position: relative;
-    background: ${({theme}) => theme.colors.white};
-    box-shadow: -24px 0 ${({theme}) => theme.colors.white}, 24px 0 ${({theme}) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.white};
+    box-shadow:
+      -24px 0 ${({ theme }) => theme.colors.white},
+      24px 0 ${({ theme }) => theme.colors.white};
     box-sizing: border-box;
     animation: shadowPulse 2s linear infinite;
   }
 
   @keyframes shadowPulse {
     33% {
-      background: ${({theme}) => theme.colors.white};
-      box-shadow: -24px 0 ${({theme}) => theme.colors.error}, 24px 0 ${({theme}) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.white};
+      box-shadow:
+        -24px 0 ${({ theme }) => theme.colors.error},
+        24px 0 ${({ theme }) => theme.colors.white};
     }
     66% {
-      background: ${({theme}) => theme.colors.error};
-      box-shadow: -24px 0 ${({theme}) => theme.colors.white}, 24px 0 ${({theme}) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.error};
+      box-shadow:
+        -24px 0 ${({ theme }) => theme.colors.white},
+        24px 0 ${({ theme }) => theme.colors.white};
     }
     100% {
-      background: ${({theme}) => theme.colors.white};
-      box-shadow: -24px 0 ${({theme}) => theme.colors.white}, 24px 0 ${({theme}) => theme.colors.error};
+      background: ${({ theme }) => theme.colors.white};
+      box-shadow:
+        -24px 0 ${({ theme }) => theme.colors.white},
+        24px 0 ${({ theme }) => theme.colors.error};
     }
   }
 `;
@@ -129,7 +136,7 @@ const pin = css`
     bottom: 0;
     position: absolute;
     border-radius: 50% 50% 0;
-    border: 15px solid ${({theme}) => theme.colors.white};
+    border: 15px solid ${({ theme }) => theme.colors.white};
     transform: rotate(45deg) translate(0, 0);
     box-sizing: border-box;
     animation: animMarker 0.4s ease-in-out infinite alternate;
@@ -173,12 +180,16 @@ const qubik = css`
     height: 64px;
     position: relative;
     background-image: ${`linear-gradient(#fff 16px, transparent 0),
-      linear-gradient(${({theme}: any) => theme.colors.error} 16px, transparent 0),
-      linear-gradient(${({theme}: any) => theme.colors.error} 16px, transparent 0),
-      linear-gradient(${({theme}: any) => theme.colors.white} 16px, transparent 0);`};
+      linear-gradient(${({ theme }: any) => theme.colors.error} 16px, transparent 0),
+      linear-gradient(${({ theme }: any) => theme.colors.error} 16px, transparent 0),
+      linear-gradient(${({ theme }: any) => theme.colors.white} 16px, transparent 0);`};
     background-repeat: no-repeat;
     background-size: 16px 16px;
-    background-position: left top, left bottom, right top, right bottom;
+    background-position:
+      left top,
+      left bottom,
+      right top,
+      right bottom;
     animation: rotate 1s linear infinite;
   }
   @keyframes rotate {

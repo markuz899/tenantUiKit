@@ -16,14 +16,13 @@ const Carousel = ({
   withPagination = false,
   hovered = false,
 }: CarouselProps) => {
-
   const theme = useTheme();
 
   const slider = useRef<any>();
   const [images, setImages] = useState<any>(options);
   const [activeIndex, setActiveIndex] = useState(0);
   const [initialSlide, setInitialSlide] = useState<any>(
-    options?.findIndex((el) => el.default)
+    options?.findIndex((el) => el.default),
   );
 
   useEffect(() => {
@@ -48,10 +47,7 @@ const Carousel = ({
 
   const types: any = {
     default: (
-      <ContentSwiper
-        className={className}
-        $background={background}
-      >
+      <ContentSwiper className={className} $background={background}>
         <Swiper
           className="swiper-classic"
           pagination={{
@@ -79,10 +75,7 @@ const Carousel = ({
       </ContentSwiper>
     ),
     grid: (
-      <ContentSwiper
-        className={className}
-        $background={background}
-      >
+      <ContentSwiper className={className} $background={background}>
         <Swiper
           className="swiper-grid"
           key={initialSlide}
@@ -118,7 +111,7 @@ const Carousel = ({
                     <p className="text-white">{item.text}</p>
                   </div>
                 )}
-                <img src={item?.path} alt=""/>
+                <img src={item?.path} alt="" />
               </SwiperSlide>
             );
           })}
@@ -152,7 +145,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
         object-position: center;
       }
       .content-title {
-        padding: ${({theme}) => theme.spaces.space4};
+        padding: ${({ theme }) => theme.spaces.space4};
         position: absolute;
         left: 0;
         bottom: 0;
@@ -165,7 +158,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
         display: flex;
         align-items: center;
         p {
-          font-size: ${({theme}) => theme.font.size.big};
+          font-size: ${({ theme }) => theme.font.size.big};
         }
       }
       &.swiper-slide-active {
@@ -208,7 +201,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
         display: flex;
         align-items: center;
         p {
-          font-size: ${({theme}) => theme.font.size.xBig};
+          font-size: ${({ theme }) => theme.font.size.xBig};
           line-height: 50px;
         }
       }
@@ -245,6 +238,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
       }
     }
   }
-  @media only screen and (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}) {
   }
 `;

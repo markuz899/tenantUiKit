@@ -14,7 +14,6 @@ const WordChanger = ({
   color?: string;
   uppercase?: boolean;
 }) => {
-
   const theme = useTheme();
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);

@@ -31,9 +31,8 @@ const Select: React.FC<SelectProps> = ({
   clearable = false,
   width,
 }) => {
-
   const theme = useTheme();
-  
+
   const [disable, setDisable] = useState(disabled || false);
   const [state, setState] = useState<string | string[]>(value);
   const [values, setValues] = useState<string[]>(defaultValues || []);
@@ -90,7 +89,7 @@ const Select: React.FC<SelectProps> = ({
 
   const onSelect = (
     item: { label: string; value: string },
-    callback: () => void
+    callback: () => void,
   ) => {
     const { label, value } = item;
     if (multiselect) {
@@ -127,7 +126,7 @@ const Select: React.FC<SelectProps> = ({
   const handleOnChange = (
     data: { value: string },
     visible: boolean,
-    show: () => void
+    show: () => void,
   ) => {
     if (enableInput) {
       setState(data.value);
@@ -137,8 +136,8 @@ const Select: React.FC<SelectProps> = ({
       } else {
         setFiltered(
           options.filter((item) =>
-            item.label.toLowerCase().includes(data.value.toLowerCase())
-          )
+            item.label.toLowerCase().includes(data.value.toLowerCase()),
+          ),
         );
         if (!visible) show();
       }
@@ -149,7 +148,7 @@ const Select: React.FC<SelectProps> = ({
   const handleShowDrop = (
     show: () => void,
     visible: boolean,
-    close: () => void
+    close: () => void,
   ) => {
     if (filtered.length > 0) {
       show();
@@ -167,7 +166,7 @@ const Select: React.FC<SelectProps> = ({
       show,
       visible,
       close,
-    }: { show: () => void; visible: boolean; close: () => void }
+    }: { show: () => void; visible: boolean; close: () => void },
   ) => {
     if (e.key === "Enter") {
       const { label, value } = filtered[hover];
@@ -280,12 +279,12 @@ export const Options = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: -13px;
-  border: 1px solid ${({theme}) => theme.colors.borderComponent};
+  border: 1px solid ${({ theme }) => theme.colors.borderComponent};
   max-height: 300px;
   overflow: hidden;
   overflow-y: scroll;
-  border-radius: ${({theme}) => theme.extra.radiusBig};
-  background: ${({theme}) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
+  background: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.text};
   &::-webkit-scrollbar {
     display: none;
@@ -294,12 +293,13 @@ export const Options = styled.div`
 
 export const Row = styled.div<{ $multiselect: any }>`
   cursor: pointer;
-  padding: ${({theme}) => theme.spaces.space2};
+  padding: ${({ theme }) => theme.spaces.space2};
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-bottom: 1px solid ${({theme}) => theme.colors.greyIcon};
-  ${({$multiselect}) => $multiselect && `padding: 0 ${({theme}:any) => theme.spaces.space2}`}
+  border-bottom: 1px solid ${({ theme }) => theme.colors.greyIcon};
+  ${({ $multiselect }) =>
+    $multiselect && `padding: 0 ${({ theme }: any) => theme.spaces.space2}`}
   &:last-child {
     border-bottom: none;
   }
@@ -317,23 +317,23 @@ export const Option = styled.li<{
   align-items: center;
   text-align: left;
   list-style-type: none;
-  color: ${({theme, selected, $hover, $active}) =>
+  color: ${({ theme, selected, $hover, $active }) =>
     selected && $hover
       ? theme.colors.primary
       : selected || $active
-      ? theme.colors.primary
-      : $hover
-      ? theme.colors.primary
-      : theme.colors.black};
+        ? theme.colors.primary
+        : $hover
+          ? theme.colors.primary
+          : theme.colors.black};
   font-weight: ${(p) =>
     p.selected && p.$hover
       ? "bold"
       : p.selected || p.$active
-      ? "bold"
-      : p.$hover
-      ? "bold"
-      : "null"};
-  font-size: ${({theme}) => theme.font.size.tiny};
+        ? "bold"
+        : p.$hover
+          ? "bold"
+          : "null"};
+  font-size: ${({ theme }) => theme.font.size.tiny};
   &:last-child {
     border-bottom: 0;
   }

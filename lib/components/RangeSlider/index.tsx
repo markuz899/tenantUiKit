@@ -22,7 +22,6 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
   value,
   onChange,
 }) => {
-
   const theme = useTheme();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -73,32 +72,32 @@ const SliderContainer = styled.div`
   margin-right: auto;
 
   input[type="range"] {
-    background: ${`linear-gradient(to right, ${({theme}: any) => theme.colors.primaryLight}61 0%, ${({theme}: any) => theme.colors.white} 0%)`};
+    background: ${`linear-gradient(to right, ${({ theme }: any) => theme.colors.primaryLight}61 0%, ${({ theme }: any) => theme.colors.white} 0%)`};
     width: 100%;
-    height: ${({theme}) => theme.spaces.space2};
+    height: ${({ theme }) => theme.spaces.space2};
     outline: none;
     transition: background 450ms ease-in;
-    border: 2px solid ${({theme}) => theme.colors.primary};
-    border-radius: ${({theme}) => theme.extra.radiusBig};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    border-radius: ${({ theme }) => theme.extra.radiusBig};
     -webkit-appearance: none;
     &::-webkit-slider-thumb {
       border-radius: 50px;
-      width: ${({theme}) => theme.spaces.space4};
-      height: ${({theme}) => theme.spaces.space4};
-      background-color: ${({theme}) => theme.colors.primary};
-      border: 2px solid ${({theme}) => theme.colors.primaryLight};
+      width: ${({ theme }) => theme.spaces.space4};
+      height: ${({ theme }) => theme.spaces.space4};
+      background-color: ${({ theme }) => theme.colors.primary};
+      border: 2px solid ${({ theme }) => theme.colors.primaryLight};
       cursor: pointer;
       -webkit-appearance: none;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
       &:hover {
-        background: ${({theme}) => theme.colors.primaryDark};
+        background: ${({ theme }) => theme.colors.primaryDark};
       }
       &:active {
         cursor: grab;
       }
     }
     &:disabled {
-      background: ${({theme}) => theme.colors.greyIcon};
+      background: ${({ theme }) => theme.colors.greyIcon};
     }
   }
 `;
