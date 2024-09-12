@@ -3,7 +3,11 @@ import styled, { css, useTheme } from "styled-components";
 import Icon from "../Icon";
 import { AccordionProps, AccordionItemProps } from "./interface";
 
-const Accordion: React.FC<AccordionProps> = ({ options, inline = false, multipleOpen = false }) => {
+const Accordion: React.FC<AccordionProps> = ({
+  options,
+  inline = false,
+  multipleOpen = false,
+}) => {
   const theme = useTheme();
 
   const [clicked, setClicked] = useState<number | null>(null);
@@ -41,7 +45,9 @@ const Accordion: React.FC<AccordionProps> = ({ options, inline = false, multiple
     <ContentAccordion $inline={inline}>
       {options?.map((faq, index: number) => (
         <AccordionItem
-          onToggle={() => (!multipleOpen ? handleToggle(index) : handleMultiToggle(index))}
+          onToggle={() =>
+            !multipleOpen ? handleToggle(index) : handleMultiToggle(index)
+          }
           active={isActive(index)}
           key={index}
           faq={faq}

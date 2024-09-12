@@ -203,8 +203,7 @@ const Box = styled.div`
   width: 800px;
   height: 100%;
   background: ${({ theme }) => theme.colors.black};
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-width: 100%;
     width: 100%;
   }
@@ -217,10 +216,8 @@ const Slides = styled.div<{ width?: number; height?: number }>`
   flex-direction: column;
   overflow: hidden;
   min-height: 500px;
-  height: ${(props) =>
-    props.height ? `${props.height}px` : "calc(100vh - 70px)"};
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  height: ${(props) => (props.height ? `${props.height}px` : "calc(100vh - 70px)")};
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     height: 600px;
   }
@@ -235,8 +232,7 @@ const ContainerDot = styled.div`
   justify-content: space-evenly;
   padding-left: 50px;
   max-width: 500px;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding-left: 0;
   }
 `;
@@ -299,8 +295,7 @@ const Container = styled.div`
     left: 20px;
     bottom: 20px;
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     &.slideshow-dot {
       bottom: ${({ theme }) => theme.spaces.space4};
     }
