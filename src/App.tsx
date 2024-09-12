@@ -1,18 +1,25 @@
-import { Button, Radio } from "../lib";
+import { useTheme } from "styled-components";
+import {
+  Button,
+  Modal
+} from "../lib";
 
 function App() {
+
+  const theme = useTheme();
+
   return (
     <div>
-      <Button>Button</Button>
-      <Radio
-        inline
-        name="radio"
-        onChange={(d) => console.log(d)}
-        options={[
-          { label: "1", value: 1 },
-          { label: "2", value: 2 },
-        ]}
-      />
+      <div id="root-modal"></div>
+      <div id="root-tooltip"></div>
+          <Modal
+            onClickOther
+            title="Test modal"
+            render={({ close }) => <div>Modal test</div>}
+          >
+            test
+          </Modal>
+          <Button>button</Button>
     </div>
   );
 }

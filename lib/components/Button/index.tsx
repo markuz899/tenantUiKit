@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (kind && !availableKinds.includes(kind)) buttonKind = "primary";
 
-  let inner: React.ReactNode[] | string | any = children
+  let inner: React.ReactNode[] | string | JSX.Element = children
     ? Children.toArray(children)
     : label;
 

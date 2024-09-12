@@ -3,7 +3,6 @@ import styled, { useTheme } from "styled-components";
 import Icon from "../Icon";
 import { CheckboxProps } from "./interface";
 
-/* eslint-disable */
 const Checkbox: React.FC<CheckboxProps> = ({
   refer,
   name = "check-default",

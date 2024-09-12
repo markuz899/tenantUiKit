@@ -3,7 +3,6 @@ import styled from "styled-components";
 import icons from "./icons";
 import { IconProps } from "./interface";
 
-/* eslint-disable */
 const Icon: React.FC<IconProps> = ({
   name,
   color = "#DADEE1",
