@@ -98,6 +98,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 };
 
 const ContentAccordion = styled.ul<{ $inline: boolean }>`
+  padding: 0;
   width: 100%;
   list-style: none;
   ${(props) => props.$inline && InlineStyle}
@@ -119,8 +120,7 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: ${({ theme }) => theme.spaces.space5}
-        ${({ theme }) => theme.spaces.space6};
+      padding: ${({ theme }) => `${theme.spaces.space5} ${theme.spaces.space6}`};
       z-index: 2;
       transition: all 0.5s;
       cursor: pointer;
@@ -136,8 +136,7 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
     .answer {
       color: ${({ theme }) => theme.colors.dark};
       font-size: ${({ theme }) => theme.font.size.normal};
-      padding: ${({ theme }) => theme.spaces.space4}
-        ${({ theme }) => theme.spaces.space6};
+      padding: ${({ theme }) => `${theme.spaces.space5} ${theme.spaces.space6}`};
       background: ${({ theme }) => theme.colors.greyIcon};
     }
 
@@ -154,8 +153,7 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
       border-bottom-right-radius: ${({ theme }) => theme.extra.radius};
     }
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     .accordion_item {
       button {
         p {
@@ -172,8 +170,7 @@ const ContentAccordion = styled.ul<{ $inline: boolean }>`
 const InlineStyle = css`
   display: flex;
   gap: ${({ theme }) => theme.spaces.space2};
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
     gap: 0;
   }

@@ -443,8 +443,7 @@ const Label = styled.label<{
           ? $inputBgColor
           : theme.colors.white};
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.font.size.tiny};
   }
 `;

@@ -109,8 +109,7 @@ export default Modal;
 
 const Destiny = styled.div<{ $fluid?: boolean }>`
   display: ${(p) => (p.$fluid ? "block" : "inline-block")};
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
   }
 `;
 
@@ -170,8 +169,7 @@ const Header = styled.div`
     right: 30px;
     cursor: pointer;
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     h2 {
       font-size: ${({ theme }) => theme.font.size.normal};
     }
@@ -201,8 +199,7 @@ const Content = styled.div<ModalContentProps>`
   &::-webkit-scrollbar {
     display: none;
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
   }
 `;

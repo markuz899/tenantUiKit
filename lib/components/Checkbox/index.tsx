@@ -115,8 +115,7 @@ const Box = styled.div<{
     left: 0;
     font-size: ${({ theme }) => theme.font.size.mini};
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     label {
       max-width: 80%;
     }

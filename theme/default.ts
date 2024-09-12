@@ -70,12 +70,7 @@ const defaultTheme = {
       bold: "700",
     },
     family: {
-      mont: "Montserrat",
-      montBold: "Montserrat-Bold",
-      montMedium: "Montserrat-Medium",
-      montRegular: "Montserrat-Regular",
-      raleway: "Raleway",
-      ralewayMedium: "Raleway-Medium",
+      primary: "auto",
     },
   },
   spaces: {

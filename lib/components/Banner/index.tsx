@@ -118,8 +118,7 @@ const Msg = styled.div<MsgProps>`
     font-family: Helvetica;
     line-height: 1.2;
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     .title {
       font-size: ${({ theme }) => theme.font.size.small};
     }

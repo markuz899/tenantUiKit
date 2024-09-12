@@ -90,7 +90,7 @@ const Carousel = ({
           onClick={handleChange}
           modules={[Pagination, Autoplay]}
           onSlideChange={() => {}}
-          onSwiper={(swiper) => {}}
+          onSwiper={(swiper:any) => {}}
           autoplay={{
             delay: 3000,
             pauseOnMouseEnter: true,
@@ -238,7 +238,6 @@ const ContentSwiper = styled.div<{ $background?: string }>`
       }
     }
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
   }
 `;

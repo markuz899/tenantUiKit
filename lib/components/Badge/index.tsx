@@ -99,8 +99,7 @@ const StyledBadge = styled.div<Props>`
   align-items: center;
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.primary};
-  padding: ${({ theme }) => theme.spaces.space2}
-    ${({ theme }) => theme.spaces.space4};
+  padding: ${({ theme }) => `${theme.spaces.space2} ${theme.spaces.space4}`};
   border: 2px solid ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
   text-transform: uppercase;
@@ -116,8 +115,7 @@ const StyledBadge = styled.div<Props>`
     align-items: center;
     cursor: pointer;
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     white-space: nowrap;
     flex: 1 0 35%;
     padding: 8px;

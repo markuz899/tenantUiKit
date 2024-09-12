@@ -236,7 +236,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: 0;
   font-size: ${({ theme }) => theme.font.size.minor};
   font-weight: ${({ theme }) => theme.font.weight.medium};
-  font-family: ${({ theme }) => theme.font.family.ralewayMedium};
   display: inline-flex;
   align-items: center;
   justify-content: center;

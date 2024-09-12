@@ -127,8 +127,7 @@ const Buttons = styled.div`
     background: ${({ theme }) => theme.colors.primary};
     border: 2px solid ${({ theme }) => theme.colors.primaryDark};
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
   }
 `;
 
@@ -138,8 +137,7 @@ const Tab = styled.button<{ $iconColor: string }>`
   border: none;
   background: transparent;
   color: ${({ theme }) => theme.text};
-  padding: ${({ theme }) => theme.spaces.space2}
-    ${({ theme }) => theme.spaces.space4};
+  padding: ${({ theme }) => `${theme.spaces.space2} ${theme.spaces.space4}`};
   position: relative;
   z-index: 1;
   transition-duration: 0.6s;
@@ -166,8 +164,7 @@ const Tab = styled.button<{ $iconColor: string }>`
       color: ${({ theme }) => theme.colors.white};
     }
   }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ theme }) => theme.spaces.space2};
   }
 `;
@@ -175,12 +172,10 @@ const Tab = styled.button<{ $iconColor: string }>`
 const Box = styled.div`
   box-shadow: ${({ theme }) => theme.extra.shadow};
   border-radius: ${({ theme }) => theme.extra.radiusBig};
-  padding: ${({ theme }) => theme.spaces.space1}
-    ${({ theme }) => theme.spaces.space3} ${({ theme }) => theme.spaces.space3};
+  padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space3} ${theme.spaces.space3}`};
   background: ${({ theme }) => theme.colors.white};
   width: 100%;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}) {
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0;
     border: 0;
     box-shadow: none;

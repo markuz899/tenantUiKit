@@ -12,4 +12,8 @@ export interface DatePickerProps {
   hidden?: any;
   startMonth?: any;
   endMonth?: any;
+  clearable?: boolean;
+  range?: boolean;
+  placeholder?: string;
+  topPlaceholder?: string;
 }

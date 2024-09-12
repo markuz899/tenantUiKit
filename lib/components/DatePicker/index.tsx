@@ -32,6 +32,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   hidden,
   startMonth,
   endMonth,
+  placeholder = "GG/MM/AAAA",
+  topPlaceholder,
 }) => {
   const theme = useTheme();
 
@@ -223,7 +225,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
         type="text"
         autoComplete="off"
         icon={"calendar"}
-        placeholder={"GG/MM/AAAA"}
+        placeholder={placeholder}
+        topPlaceholder={topPlaceholder}
         defaultValue={renderLabel}
         onChange={handleInputChange}
       />
