@@ -201,7 +201,7 @@ const ContentSwiper = styled.div<{ $background?: string }>`
         display: flex;
         align-items: center;
         p {
-          font-size: ${({ theme }) => theme.font.size.xBig};
+          font-size: ${({ theme }) => theme.font.size.xl};
           line-height: 50px;
         }
       }
