@@ -241,7 +241,6 @@ const ContentBox = styled.div`
   .error-msg {
     background: ${({ theme }) => theme.colors.errorLight};
     border-radius: 12px;
-    width: 100%;
     margin-top: 4px;
     padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
     font-size: ${({ theme }) => theme.font.size.minor};
