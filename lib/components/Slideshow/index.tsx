@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import useResize from "../../hooks/useResize";
 
@@ -29,20 +29,16 @@ const Slideshow: React.FC<SlideshowProps> = ({
   width = 800,
   height = 320,
   duration = 7000,
-  close,
-  onClose = () => {},
   options = [],
   clickInside,
   withDot = false,
 }) => {
-  const theme = useTheme();
-
   const { isSmall } = useBreakpoints();
   const container = useRef<HTMLDivElement | null>(null);
   const size: any = useResize();
   const [selected, setSelected] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number>(0);
-  const [touchEnd, setTouchEnd] = useState<number>(0);
+  const [_, setTouchEnd] = useState<number>(0);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
@@ -58,13 +54,14 @@ const Slideshow: React.FC<SlideshowProps> = ({
   }, [selected, options]);
 
   const shiftSlide = (e: React.MouseEvent | React.TouchEvent, i: number) => {
+    e?.preventDefault();
     setSelected(i);
   };
 
-  const handleJump = () => {
-    if (close) close();
-    onClose(true);
-  };
+  // const handleJump = () => {
+  //   if (close) close();
+  //   onClose(true);
+  // };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setTouchStart(e.clientX);

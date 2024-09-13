@@ -1,5 +1,5 @@
 import React, { useState, Children } from "react";
-import styled, { css, useTheme } from "styled-components";
+import styled, { css } from "styled-components";
 import { BannerProps } from "./interface";
 import { colorBasedOnBg } from "../../utils/utils";
 import { BASE_COLOR } from "../../../theme";
@@ -14,8 +14,6 @@ const Banner: React.FC<BannerProps> = ({
   children,
   className,
 }) => {
-  const theme = useTheme();
-
   const inner = children ? Children.toArray(children) : content;
   let colorKind = kind;
   if (!availableKinds.includes(kind)) colorKind = "info";

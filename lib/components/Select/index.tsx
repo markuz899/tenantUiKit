@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import Dropdown from "../Dropdown";
 import Input from "../Input";
 import Checkbox from "../Checkbox";
@@ -10,7 +10,6 @@ const Select: React.FC<SelectProps> = ({
   onChange,
   onInputChange,
   placeholder = "Select...",
-  topPlaceholder,
   labelBgColor,
   name,
   showArrow = true,
@@ -31,8 +30,6 @@ const Select: React.FC<SelectProps> = ({
   clearable = false,
   width,
 }) => {
-  const theme = useTheme();
-
   const [disable, setDisable] = useState(disabled || false);
   const [state, setState] = useState<string | string[]>(value);
   const [values, setValues] = useState<string[]>(defaultValues || []);

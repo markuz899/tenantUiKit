@@ -1,7 +1,5 @@
-import styled, { css, useTheme } from "styled-components";
+import styled, { css } from "styled-components";
 const Loader = ({ isActive = true, debug = false, type = "spin" }: any) => {
-  const theme = useTheme();
-
   return (
     <LoadStyle $isActive={isActive} $debug={debug} type={type}>
       <div className={type}></div>

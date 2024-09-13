@@ -1,6 +1,6 @@
 import React, { Children, useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { PopoverProps } from "./interface";
 
 const Popover: React.FC<PopoverProps> = ({
@@ -11,8 +11,6 @@ const Popover: React.FC<PopoverProps> = ({
   renderContent,
   portalId = "root-tooltip",
 }) => {
-  const theme = useTheme();
-
   const target = useRef<any>(null);
   const tip = useRef<HTMLDivElement>(null);
   const arrow = useRef<HTMLDivElement>(null);
@@ -76,10 +74,6 @@ const Popover: React.FC<PopoverProps> = ({
       document.removeEventListener("click", toggleVisibility);
     };
   });
-
-  const show = () => {
-    setState(true);
-  };
 
   const close = () => {
     setState(false);

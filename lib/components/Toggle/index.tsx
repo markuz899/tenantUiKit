@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { ToggleProps } from "./interface";
 
 const Toggle: React.FC<ToggleProps> = ({
@@ -12,8 +12,6 @@ const Toggle: React.FC<ToggleProps> = ({
   label,
   disabled = false,
 }) => {
-  const theme = useTheme();
-
   const [state, setState] = useState(checked || false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
 

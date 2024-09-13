@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled, { useTheme, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { DropdownProps } from "./interface";
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -16,8 +16,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   topPosition,
   className,
 }) => {
-  const theme = useTheme();
-
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState<React.CSSProperties>({});
   const target = useRef<HTMLDivElement>(null);
@@ -30,8 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const setDropdownPosition = () => {
     if (target.current && dropdown.current) {
       const rect = target.current.getBoundingClientRect();
-      const maxWidth = (target.current.firstChild as HTMLElement)?.getBoundingClientRect()
-        .width;
+
       const p: React.CSSProperties = {
         left: leftPosition || 0,
         right: undefined,
@@ -78,7 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (dropdown.current && !dropdown.current.contains(e.target)) {
       if (includeTarget) {
         if (target.current?.contains(e.target)) return;
-        const classList = [...e.target.classList];
+        // const classList = [...e.target.classList];
       }
       setVisible(false);
     }

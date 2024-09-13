@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import { CarouselProps } from "./interface";
 import "swiper/css";
@@ -16,11 +16,9 @@ const Carousel = ({
   withPagination = false,
   hovered = false,
 }: CarouselProps) => {
-  const theme = useTheme();
-
   const slider = useRef<any>();
   const [images, setImages] = useState<any>(options);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [_, setActiveIndex] = useState(0);
   const [initialSlide, setInitialSlide] = useState<any>(
     options?.findIndex((el) => el.default),
   );
@@ -90,7 +88,7 @@ const Carousel = ({
           onClick={handleChange}
           modules={[Pagination, Autoplay]}
           onSlideChange={() => {}}
-          onSwiper={(swiper: any) => {}}
+          onSwiper={() => {}}
           autoplay={{
             delay: 3000,
             pauseOnMouseEnter: true,

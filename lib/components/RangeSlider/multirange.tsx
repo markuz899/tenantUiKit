@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -25,10 +25,7 @@ declare global {
 interface MultiRangeSliderProps {
   min: number;
   max: number;
-  onChange?: (value: {
-    name: string;
-    value: { min: number; max: number };
-  }) => void;
+  onChange?: (value: { name: string; value: { min: number; max: number } }) => void;
   name?: string;
   defaultMin?: number;
   defaultMax?: number;
@@ -42,8 +39,6 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
   defaultMin,
   defaultMax,
 }) => {
-  const theme = useTheme();
-
   const [minVal, setMinVal] = useState<number>(defaultMin || min);
   const [maxVal, setMaxVal] = useState<number>(defaultMax || max);
   const sliderRef = useRef<any>(null);

@@ -8,7 +8,7 @@ import {
 } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { it } from "date-fns/locale";
 import Dropdown from "../Dropdown";
 import Input from "../Input";
@@ -35,8 +35,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
   placeholder = "GG/MM/AAAA",
   topPlaceholder,
 }) => {
-  const theme = useTheme();
-
   const [onlyRead, setOnlyRead] = useState(readOnly);
   const [selected, setSelected] = useState<Date>();
   const [multiSelected, setMultiSelected] = useState<any>([]);
@@ -53,28 +51,25 @@ const DatePicker: React.FC<DatePickerProps> = ({
   }, []);
 
   // range handler
-  const handleRangeSelection = useCallback(
-    (date: { from: Date; to?: Date }, close?: any) => {
-      setRangeSelected(date);
-      if (!date) {
-        setInputValue(null);
-        onChange && onChange({ name, value: null });
-        return;
-      }
-      onChange &&
-        onChange({
-          name,
-          value: {
-            start: date.from ? format(date.from, FORMAT_DATA) : null,
-            end: date.to ? format(date.to, FORMAT_DATA) : null,
-          },
-        });
-    },
-    [],
-  );
+  const handleRangeSelection = useCallback((date: { from: Date; to?: Date }) => {
+    setRangeSelected(date);
+    if (!date) {
+      setInputValue(null);
+      onChange && onChange({ name, value: null });
+      return;
+    }
+    onChange &&
+      onChange({
+        name,
+        value: {
+          start: date.from ? format(date.from, FORMAT_DATA) : null,
+          end: date.to ? format(date.to, FORMAT_DATA) : null,
+        },
+      });
+  }, []);
 
   // multiple handler
-  const handleMultiSelection = useCallback((date: Date[], close?: any) => {
+  const handleMultiSelection = useCallback((date: Date[]) => {
     setMultiSelected(date);
     if (!date.length) {
       setInputValue(null);
@@ -172,10 +167,10 @@ const DatePicker: React.FC<DatePickerProps> = ({
           handleDayPickerSelection(date, close);
           break;
         case "multiple":
-          handleMultiSelection(date, close);
+          handleMultiSelection(date);
           break;
         case "range":
-          handleRangeSelection(date, close);
+          handleRangeSelection(date);
           break;
         default:
           break;
@@ -209,7 +204,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     );
   };
 
-  const renderTarget = ({ show, close }: { show: () => void; close: () => void }) => (
+  const renderTarget = ({ show }: { show: () => void; close?: () => void }) => (
     <Target className={className} onClick={show}>
       <Input
         clearable

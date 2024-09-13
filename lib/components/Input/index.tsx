@@ -270,7 +270,7 @@ const Box = styled.div<{
   width: 100%;
   padding: 0 12px;
   border: 1px solid
-    ${({ $isError, $isWarning, $focus, $disabled, theme }) =>
+    ${({ $isWarning, $focus, $disabled, theme }) =>
       $isWarning
         ? theme.colors.warning
         : $disabled

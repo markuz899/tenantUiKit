@@ -1,8 +1,8 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from ".";
 
 export const setCols = (
-  cols: 1 | 2 | 3 | 4 | 10 | 20 | 30 | 35 | 40 | 50 | 60 | 65 | 70 | 80 | 90
+  cols: 1 | 2 | 3 | 4 | 10 | 20 | 30 | 35 | 40 | 50 | 60 | 65 | 70 | 80 | 90,
 ) => {
   const col = {
     1: "100%",
@@ -143,8 +143,8 @@ export const Content = styled(Container)`
     display: flex;
     flex-flow: row wrap;
     .card {
-      flex: 0 0 ${(p) => setCols(3)};
-      width: ${(p) => setCols(3)};
+      flex: 0 0 ${setCols(3)};
+      width: ${setCols(3)};
     }
     .empty-data {
       width: 100%;
@@ -162,7 +162,7 @@ export const Content = styled(Container)`
   @media only screen and (max-width: ${theme.breakpoints.tablet}) {
     .card-list {
       .card {
-        flex: 0 0 ${(p) => setCols(2)};
+        flex: 0 0 ${setCols(2)};
       }
     }
   }
@@ -173,7 +173,7 @@ export const Content = styled(Container)`
     }
     .card-list {
       .card {
-        flex: 0 0 ${(p) => setCols(1)};
+        flex: 0 0 ${setCols(1)};
       }
     }
     .card-map {

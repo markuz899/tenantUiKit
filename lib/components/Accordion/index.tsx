@@ -8,8 +8,6 @@ const Accordion: React.FC<AccordionProps> = ({
   inline = false,
   multipleOpen = false,
 }) => {
-  const theme = useTheme();
-
   const [clicked, setClicked] = useState<number | null>(null);
   const [clickeds, setClickeds] = useState<number[]>([]);
 

@@ -56,7 +56,7 @@ const Tabs: React.FC<TabsProps> = ({
     }
   }, [selected, options, defaultValue]);
 
-  const select = (option: Option, index: number) => {
+  const select = (option: Option) => {
     if (option.value === selected.value) return;
     setValue(option);
     onChange && onChange({ name, value: option.value });
@@ -68,10 +68,10 @@ const Tabs: React.FC<TabsProps> = ({
         <Buttons ref={tabRef}>
           <div className="selector" ref={selectorRef} />
           {options &&
-            options.map((option, i) => (
+            options.map((option) => (
               <Tab
                 key={option.value}
-                onClick={() => select(option, i)}
+                onClick={() => select(option)}
                 className={option.value == selected.value ? "active" : ""}
                 $iconColor={option.iconColor || ""}
               >

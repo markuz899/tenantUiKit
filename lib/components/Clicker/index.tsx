@@ -1,9 +1,7 @@
 import { useState } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 const Clicker = ({ children, radius }: any) => {
-  const theme = useTheme();
-
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const handleMouseDown = () => {

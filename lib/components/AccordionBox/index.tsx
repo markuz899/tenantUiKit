@@ -9,8 +9,6 @@ const AccordionBox: React.FC<AccordionProps> = ({
   multipleOpen = false,
   withTruncate = false,
 }) => {
-  const theme = useTheme();
-
   const [clicked, setClicked] = useState<number | null>(null);
   const [clickeds, setClickeds] = useState<number[]>([]);
 

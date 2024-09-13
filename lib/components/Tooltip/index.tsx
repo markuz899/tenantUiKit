@@ -1,6 +1,6 @@
 import React, { Children, useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import styled, { keyframes, useTheme } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { TooltipProps } from "./interface";
 
 const Tooltip: React.FC<TooltipProps> = ({
@@ -10,8 +10,6 @@ const Tooltip: React.FC<TooltipProps> = ({
   flex = false,
   portalId = "root-tooltip",
 }) => {
-  const theme = useTheme();
-
   const target: any = useRef<HTMLSpanElement>(null);
   const tip = useRef<HTMLDivElement>(null);
   const arrow = useRef<HTMLDivElement>(null);

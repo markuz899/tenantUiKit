@@ -79,7 +79,6 @@ const SliderContainer = styled.div`
     transition: background 450ms ease-in;
     border: 2px solid ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.extra.radiusBig};
-    -webkit-appearance: none;
     &::-webkit-slider-thumb {
       border-radius: 50px;
       width: ${({ theme }) => theme.spaces.space4};
@@ -100,10 +99,4 @@ const SliderContainer = styled.div`
       background: ${({ theme }) => theme.colors.greyIcon};
     }
   }
-`;
-
-const ValueDisplay = styled.div`
-  margin-top: 10px;
-  font-size: 1.2em;
-  color: #333;
 `;

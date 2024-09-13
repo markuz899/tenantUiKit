@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent, useEffect } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { RadioButtonProps } from "./interface";
 import { Button } from "..";
 
@@ -12,8 +12,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   defaultValue,
   isError = false,
 }) => {
-  const theme = useTheme();
-
   const initialValue = options.find((item) => item.checked);
   const [selected, setValue] = useState<any>(initialValue || null);
 
@@ -25,6 +23,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   }, [defaultValue]);
 
   const select = (e: MouseEvent<HTMLButtonElement>, option: any) => {
+    e?.preventDefault();
     setValue(option);
     onChange({ ...option, name });
   };
@@ -32,7 +31,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <Wrapper $inline={inline} $isError={isError} className={className}>
       <div className="content">
-        {options.map((option, index) => (
+        {options.map((option) => (
           <Button
             type="button"
             key={option.value}

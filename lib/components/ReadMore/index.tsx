@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 const ReadMore = ({
   text,
@@ -10,8 +10,6 @@ const ReadMore = ({
   max?: number;
   active?: boolean;
 }) => {
-  const theme = useTheme();
-
   const [isReadMore, setIsReadMore] = useState(active);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);

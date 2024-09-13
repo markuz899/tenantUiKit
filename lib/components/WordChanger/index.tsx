@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 const WordChanger = ({
-  label,
   options = ["test", "esempio", "caso"],
   timing = 2000,
   color,
@@ -14,8 +13,6 @@ const WordChanger = ({
   color?: string;
   uppercase?: boolean;
 }) => {
-  const theme = useTheme();
-
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [words, setWords] = useState(options);
   const [fade, setFade] = useState(false);

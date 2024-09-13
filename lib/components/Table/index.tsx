@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { useTable, useSortBy, usePagination, useRowSelect } from "react-table";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
@@ -25,8 +25,6 @@ const Table: React.FC<TableProps> = ({
     disabledValue: true,
   },
 }: any) => {
-  const theme = useTheme();
-
   const {
     headerGroups,
     prepareRow,

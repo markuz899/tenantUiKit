@@ -4,7 +4,6 @@ import {
   Badge,
   Banner,
   Button,
-  Carousel,
   Checkbox,
   DatePicker,
   Dropdown,
@@ -20,7 +19,6 @@ import {
   Rating,
   Select,
   SliderTabs,
-  Slideshow,
   Textarea,
   Toggle,
   Tooltip,
@@ -36,10 +34,6 @@ function App() {
   const theme = useTheme();
 
   let allIcon = Object.keys(icons);
-  const [column, setColumn] = useState(true);
-  const [inline, setInline] = useState(true);
-  const [inlineAcc, setInlineAcc] = useState(false);
-  const [multipleAcc, setMultipleAcc] = useState(false);
   const [loaderActive, setLoaderActive] = useState<any>(false);
   const [loaderType, setLoaderType] = useState<any>("spin");
   const words = ["testo", "forma", "colore"];
@@ -56,11 +50,11 @@ function App() {
     );
   };
 
-  const renderDropdown = ({ show, close, visible }: any) => {
-    const handleShow = () => {
-      if (visible) return close();
-      if (!visible) return show();
-    };
+  const renderDropdown = () => {
+    // const handleShow = () => {
+    //   if (visible) return close();
+    //   if (!visible) return show();
+    // };
     return (
       <RenderDrop>
         <p style={{ color: "#000" }}>Lorem ipsum</p>
@@ -85,8 +79,8 @@ function App() {
       </Section>
       <Section title="Accordion">
         <Accordion
-          multipleOpen={multipleAcc}
-          inline={inlineAcc}
+          multipleOpen={false}
+          inline={false}
           options={[
             {
               question: "Lorem Ipsum is simply dummy text?",
@@ -240,9 +234,7 @@ function App() {
         <Modal
           onClickOther
           title="Test modal"
-          render={({ close }) => (
-            <div style={{ color: theme.colors.dark }}>Modal test</div>
-          )}
+          render={() => <div style={{ color: theme.colors.dark }}>Modal test</div>}
         >
           <Icon name="grid" size="45" color={theme.colors.primary} />
         </Modal>
@@ -258,7 +250,7 @@ function App() {
       <Section title="Radio">
         <Radio
           name={""}
-          inline={inline}
+          inline
           options={[
             { label: "One", value: 1 },
             { label: "Two", value: 2 },
@@ -270,7 +262,7 @@ function App() {
       <Section title="Radio button">
         <RadioButton
           name={""}
-          inline={column}
+          inline
           options={[
             { label: "One", value: 1 },
             { label: "Two", value: 2 },
