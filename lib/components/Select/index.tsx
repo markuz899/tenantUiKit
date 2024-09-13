@@ -96,7 +96,7 @@ const Select: React.FC<SelectProps> = ({
         selected = selected.filter((item) => item !== value);
       }
       setValues(selected);
-      let newSelection: string[] = [];
+      const newSelection: string[] = [];
       options.forEach((el) => {
         if (selected.includes(el.value)) {
           newSelection.push(el.label);
