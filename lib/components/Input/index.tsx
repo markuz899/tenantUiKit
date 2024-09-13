@@ -240,6 +240,7 @@ const ContentBox = styled.div`
   width: 100%;
   .error-msg {
     background: ${({ theme }) => theme.colors.errorLight};
+    color: ${({ theme }) => theme.colors.error};
     border-radius: 12px;
     margin-top: 4px;
     padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
@@ -300,17 +301,17 @@ const Box = styled.div<{
     &::placeholder {
       color: ${({ withFilter, theme }) =>
         withFilter ? theme.colors.black : theme.colors.lightGrey};
-      font-size: ${({ theme }) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.normal};
     }
     &:-ms-input-placeholder {
       color: ${({ withFilter, theme }) =>
         withFilter ? theme.colors.black : theme.colors.lightGrey};
-      font-size: ${({ theme }) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.normal};
     }
     &::-ms-input-placeholder {
       color: ${({ withFilter, theme }) =>
         withFilter ? theme.colors.black : theme.colors.lightGrey};
-      font-size: ${({ theme }) => theme.font.size.tiny};
+      font-size: ${({ theme }) => theme.font.size.normal};
     }
   }
   input:focus + label,

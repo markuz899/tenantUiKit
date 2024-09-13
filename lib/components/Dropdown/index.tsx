@@ -176,7 +176,7 @@ const Drop = styled.div<{
 }>`
   border-radius: ${({ theme }) => theme.extra.radiusBig};
   position: absolute;
-  box-shadow: 0px 2px 4px #393e4629;
+  box-shadow: 0px 16px 40px 4px rgba(0, 0, 0, 0.25);
   background: white;
   margin: ${({ theme }) => theme.spaces.space3} 0;
   font-size: ${({ theme }) => theme.font.size.tiny};

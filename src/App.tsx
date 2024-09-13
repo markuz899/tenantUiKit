@@ -350,8 +350,15 @@ function App() {
           placeholder="Città"
           options={[
             { label: "Roma", value: "1" },
-            { label: "Ancora", value: "2" },
+            { label: "Ancona", value: "2" },
             { label: "Milano", value: "3" },
+            { label: "Napoli", value: "4" },
+            { label: "Torino", value: "5" },
+            { label: "Firenze", value: "6" },
+            { label: "Bologna", value: "7" },
+            { label: "Venezia", value: "8" },
+            { label: "Palermo", value: "9" },
+            { label: "Cagliari", value: "10" },
           ]}
         />
         <Select
@@ -362,8 +369,15 @@ function App() {
           defaultValues={"1"}
           options={[
             { label: "Roma", value: "1" },
-            { label: "Ancora", value: "2" },
+            { label: "Ancona", value: "2" },
             { label: "Milano", value: "3" },
+            { label: "Napoli", value: "4" },
+            { label: "Torino", value: "5" },
+            { label: "Firenze", value: "6" },
+            { label: "Bologna", value: "7" },
+            { label: "Venezia", value: "8" },
+            { label: "Palermo", value: "9" },
+            { label: "Cagliari", value: "10" },
           ]}
         />
       </Section>
@@ -376,8 +390,15 @@ function App() {
           placeholder="Città"
           options={[
             { label: "Roma", value: "1" },
-            { label: "New York", value: "2" },
+            { label: "Ancona", value: "2" },
             { label: "Milano", value: "3" },
+            { label: "Napoli", value: "4" },
+            { label: "Torino", value: "5" },
+            { label: "Firenze", value: "6" },
+            { label: "Bologna", value: "7" },
+            { label: "Venezia", value: "8" },
+            { label: "Palermo", value: "9" },
+            { label: "Cagliari", value: "10" },
           ]}
         />
         <Select
@@ -388,8 +409,15 @@ function App() {
           defaultValues={["2"]}
           options={[
             { label: "Roma", value: "1" },
-            { label: "New York", value: "2" },
+            { label: "Ancona", value: "2" },
             { label: "Milano", value: "3" },
+            { label: "Napoli", value: "4" },
+            { label: "Torino", value: "5" },
+            { label: "Firenze", value: "6" },
+            { label: "Bologna", value: "7" },
+            { label: "Venezia", value: "8" },
+            { label: "Palermo", value: "9" },
+            { label: "Cagliari", value: "10" },
           ]}
         />
       </Section>

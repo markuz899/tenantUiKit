@@ -220,14 +220,11 @@ const Select: React.FC<SelectProps> = ({
     <Options ref={drop}>
       {filtered &&
         filtered.map((option, i) => (
-          <Row key={`${option.value}-${i}`} $multiselect={!!multiselect}>
-            {multiselect && (
-              <Checkbox
-                checked={values.includes(option.value)}
-                onChange={() => onSelect(option, close)}
-                htmlFor={`${name}-${i}`}
-              />
-            )}
+          <Row
+            key={`${option.value}-${i}`}
+            $multiselect={!!multiselect}
+            $active={multiselect ? values.includes(option.value) : false}
+          >
             <Option
               onClick={() => onSelect(option, close)}
               selected={state === option.label}
@@ -239,6 +236,13 @@ const Select: React.FC<SelectProps> = ({
             >
               {option.label}
             </Option>
+            {multiselect && (
+              <Checkbox
+                checked={values.includes(option.value)}
+                onChange={() => onSelect(option, close)}
+                htmlFor={`${name}-${i}`}
+              />
+            )}
           </Row>
         ))}
     </Options>
@@ -266,26 +270,38 @@ export const Options = styled.div`
   flex-direction: column;
   margin-top: -13px;
   border: 1px solid ${({ theme }) => theme.colors.borderComponent};
-  max-height: 300px;
+  max-height: 180px;
   overflow: hidden;
   overflow-y: scroll;
   border-radius: ${({ theme }) => theme.extra.radiusBig};
   background: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.text};
   &::-webkit-scrollbar {
-    display: none;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.primary};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
   }
 `;
 
-export const Row = styled.div<{ $multiselect: any }>`
+export const Row = styled.div<{ $multiselect: any; $active: any }>`
   cursor: pointer;
-  padding: ${({ theme }) => theme.spaces.space2};
+  padding: ${({ theme, $multiselect }) =>
+    $multiselect
+      ? `${theme.spaces.space2} ${theme.spaces.space3}`
+      : `14px ${theme.spaces.space3}`};
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyIcon};
-  ${({ $multiselect }) =>
-    $multiselect && `padding: 0 ${({ theme }: any) => theme.spaces.space2}`}
+  background: ${({ theme, $multiselect, $active }) =>
+    $multiselect && $active ? `${theme.colors.primaryLightMore}` : `inherit`};
   &:last-child {
     border-bottom: none;
   }
@@ -318,7 +334,7 @@ export const Option = styled.li<{
         ? "bold"
         : p.$hover
           ? "bold"
-          : "null"};
+          : "500"};
   font-size: ${({ theme }) => theme.font.size.tiny};
   &:last-child {
     border-bottom: 0;

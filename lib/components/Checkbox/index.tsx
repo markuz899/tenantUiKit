@@ -119,7 +119,7 @@ const Box = styled.div<{
   &:hover {
     .check-box {
       transition: all ${({ theme }) => theme.extra.transition};
-      border: 2px solid ${({ theme }) => theme.colors.primary};
+      border: 1px solid ${({ theme }) => theme.colors.primary};
     }
   }
 `;
@@ -132,8 +132,8 @@ const Check = styled.div<{ checked: boolean; disabled: boolean }>`
   margin-right: 9px;
   width: ${({ theme }) => theme.spaces.space4};
   height: ${({ theme }) => theme.spaces.space4};
-  border-radius: 4px;
-  border: 2px solid
+  border-radius: 7px;
+  border: 1px solid
     ${({ checked, theme }) =>
       checked ? theme.colors.primary : theme.colors.borderComponent};
   background-color: ${({ disabled, checked, theme }) =>
