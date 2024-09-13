@@ -123,16 +123,8 @@ function App() {
           kind="warning"
           onClick={() => alert("Close click")}
         />
-        <Badge
-          label={"Badge error"}
-          kind="error"
-          onClick={() => alert("Close click")}
-        />
-        <Badge
-          label={"Badge info"}
-          kind="info"
-          onClick={() => alert("Close click")}
-        />
+        <Badge label={"Badge error"} kind="error" onClick={() => alert("Close click")} />
+        <Badge label={"Badge info"} kind="info" onClick={() => alert("Close click")} />
       </Section>
       <Section title="Banner">
         <Banner active={true} kind={"info"} title={"Info banner"} />
@@ -192,11 +184,7 @@ function App() {
         <div className="flex gap-5 flex-wrap icon-wrap">
           {allIcon.map((el) => (
             <Tooltip key={el} content={el}>
-              <Icon
-                name={el}
-                size={theme.spaces.space5}
-                color={theme.colors.primary}
-              />
+              <Icon name={el} size={theme.spaces.space5} color={theme.colors.primary} />
             </Tooltip>
           ))}
         </div>
@@ -205,15 +193,10 @@ function App() {
         <Input
           type="search"
           className="mb-6"
-          placeholder="Input search"
+          placeholder="Tipologia possesso"
           name="name"
         />
-        <Input
-          className="mb-6"
-          icon="search"
-          placeholder="Input example"
-          name="name"
-        />
+        <Input className="mb-6" icon="search" placeholder="Input example" name="name" />
         <Input
           className="mb-6"
           iconBefore="search"
@@ -329,9 +312,7 @@ function App() {
       <Section title="Popover">
         <Popover
           renderTarget={({ visible }: any) => {
-            return (
-              <Button kind={visible ? "primary" : "action"}>Action</Button>
-            );
+            return <Button kind={visible ? "primary" : "action"}>Action</Button>;
           }}
           renderContent={({ close }: any) => {
             return (
@@ -462,13 +443,7 @@ function App() {
 
 export default App;
 
-const Section = ({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) => {
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => {
   return (
     <Compose>
       <hr />

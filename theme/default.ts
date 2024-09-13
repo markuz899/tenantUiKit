@@ -45,7 +45,8 @@ const defaultTheme = {
   },
   font: {
     size: {
-      small: "9px",
+      xs: "9px",
+      small: "10px",
       mini: "11px",
       minor: "12px",
       tiny: "14px",

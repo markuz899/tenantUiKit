@@ -41,6 +41,10 @@ const Select: React.FC<SelectProps> = ({
   const drop = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setFiltered(options);
+  }, [options]);
+
+  useEffect(() => {
     setState(value);
   }, [value]);
 
@@ -49,25 +53,20 @@ const Select: React.FC<SelectProps> = ({
     if (multiselect) {
       const selected = defaultValues ? [...defaultValues] : [];
 
-      const newSelection = options
-        .filter((el) => selected.includes(el.value))
-        .map((el) => el.label);
+      setValues(selected);
 
-      if (JSON.stringify(values) !== JSON.stringify(selected)) {
-        setValues(selected);
-      }
+      const newSelection: any = [];
+      options.forEach((el) => {
+        if (selected.includes(el.value)) {
+          newSelection.push(el.label);
+        }
+      });
 
-      if (newSelection.length === 0 && state !== "") {
+      if (newSelection.length === 0) {
         setState("");
-      } else if (
-        (newSelection.length === 1 || newSelection.length === 2) &&
-        state !== newSelection.toString()
-      ) {
+      } else if (newSelection.length === 1 || newSelection.length === 2) {
         setState(newSelection.toString());
-      } else if (
-        newSelection.length > 2 &&
-        state !== `${newSelection.length} selezionati`
-      ) {
+      } else if (newSelection.length > 2) {
         setState(`${newSelection.length} selezionati`);
       }
     } else {
@@ -85,7 +84,7 @@ const Select: React.FC<SelectProps> = ({
       }
     }
     // eslint-disable-next-line
-  }, [defaultValues, options, disabled]);
+  }, [options]);
 
   const onSelect = (item: { label: string; value: string }, callback: () => void) => {
     const { label, value } = item;
@@ -97,7 +96,7 @@ const Select: React.FC<SelectProps> = ({
         selected = selected.filter((item) => item !== value);
       }
       setValues(selected);
-      const newSelection: string[] = [];
+      let newSelection: string[] = [];
       options.forEach((el) => {
         if (selected.includes(el.value)) {
           newSelection.push(el.label);
@@ -197,10 +196,8 @@ const Select: React.FC<SelectProps> = ({
         type="text"
         autoComplete="off"
         placeholder={placeholder}
-        topPlaceholder={topPlaceholder}
         labelBgColor={labelBgColor}
-        importantDefault
-        defaultValue={state as string}
+        value={state as string}
         name={name || ""}
         onChange={(data: any) => handleOnChange(data, visible, show)}
         inputSelectAction={{ visible, show, close }}
