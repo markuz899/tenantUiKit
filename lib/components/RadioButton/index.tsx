@@ -1,7 +1,6 @@
 import React, { useState, MouseEvent, useEffect } from "react";
 import styled from "styled-components";
 import { RadioButtonProps } from "./interface";
-import { Button } from "..";
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   options,

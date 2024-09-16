@@ -151,22 +151,3 @@ const Check = styled.div<{ checked: boolean; disabled: boolean }>`
     position: absolute;
   }
 `;
-
-const BtnCheck = styled.div`
-  input {
-    display: none;
-    &:checked ~ span {
-      border: 1px solid ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.primary};
-    }
-  }
-  span {
-    min-height: ${({ theme }) => theme.spaces.space9};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid ${({ theme }) => theme.colors.grey};
-    border-radius: 3px;
-    font-size: ${({ theme }) => theme.font.size.minor};
-  }
-`;
