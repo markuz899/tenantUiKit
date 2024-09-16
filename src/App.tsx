@@ -163,13 +163,6 @@ function App() {
             </Button>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button kind="minimal">Minimal</Button>
-            <Button kind="minimal-success">Success</Button>
-            <Button kind="minimal-error">Error</Button>
-            <Button kind="minimal-warning">Warning</Button>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button kind="ghost">Ghost</Button>
             <Button kind="action">Action</Button>
           </div>
         </div>

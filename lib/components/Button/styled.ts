@@ -173,6 +173,20 @@ export const KIND = {
       }
     }
   `,
+  action: css`
+    background: ${({ theme }) => theme.colors.primaryLight};
+    color: ${({ theme }) => theme.colors.primary};
+    svg {
+      fill: ${({ theme }) => theme.colors.white};
+    }
+    &:disabled {
+      background-color: ${({ theme }) => theme.colors.disabled};
+      color: ${({ theme }) => theme.colors.white};
+      svg {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  `,
 };
 
 /* eslint-disable */
