@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 import Icon from "../Icon";
 import { CheckboxProps } from "./interface";
+import Button from "../Button";
 
 const Checkbox: React.FC<CheckboxProps> = ({
   refer,
@@ -76,12 +77,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
   }
 
   return (
-    <BtnCheck>
-      <label>
-        <input onChange={handleChange} type="checkbox" disabled={disabled} />
-        <span>{label}</span>
-      </label>
-    </BtnCheck>
+    <Button
+      onClick={(e: any) => handleChange(e)}
+      kind={isChecked ? "primary" : "action"}
+      className={className ? className : ""}
+    >
+      {label && <label htmlFor={htmlFor}>{label}</label>}
+      {children && <label htmlFor={htmlFor}>{children}</label>}
+    </Button>
   );
 };
 
