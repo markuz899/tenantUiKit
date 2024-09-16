@@ -268,7 +268,22 @@ function App() {
             { label: "Two", value: 2 },
             { label: "Three", value: 3 },
           ]}
-          onChange={() => {}}
+          onChange={(d) => {
+            console.log(d);
+          }}
+        />
+        <RadioButton
+          name={""}
+          inline
+          disabled
+          options={[
+            { label: "One", value: 1 },
+            { label: "Two", value: 2 },
+            { label: "Three", value: 3 },
+          ]}
+          onChange={(d) => {
+            console.log(d);
+          }}
         />
       </Section>
       <Section title="Radio slider">

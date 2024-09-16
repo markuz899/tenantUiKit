@@ -13,4 +13,5 @@ export interface RadioButtonProps {
   inline?: boolean;
   isError?: boolean;
   defaultValue?: any;
+  disabled?: boolean;
 }

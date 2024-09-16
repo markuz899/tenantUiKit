@@ -9,6 +9,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   className,
   name = "radio-button",
   inline = true,
+  disabled = false,
   defaultValue,
   isError = false,
 }) => {
@@ -29,15 +30,22 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   };
 
   return (
-    <Wrapper $inline={inline} $isError={isError} className={className}>
+    <Wrapper
+      $inline={inline}
+      $isError={isError}
+      className={className}
+      $disabled={disabled}
+    >
       <div className="content">
         {options.map((option, i) => (
           <Tab
             type="button"
             key={i}
+            $isError={isError}
             $active={option.value === selected?.value}
-            disabled={option.disabled}
+            disabled={disabled || option.disabled}
             onClick={(e: any) => select(option, e)}
+            $disabled={disabled}
           >
             <div className="text">
               <p>{option.label}</p>
@@ -51,7 +59,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
 export default RadioButton;
 
-const Wrapper = styled.div<{ $inline: boolean; $isError: boolean }>`
+const Wrapper = styled.div<{ $inline: boolean; $isError: boolean; $disabled: boolean }>`
   width: 100%;
   .content {
     margin: 0 auto;
@@ -66,19 +74,29 @@ const Wrapper = styled.div<{ $inline: boolean; $isError: boolean }>`
   }
 `;
 
-const Tab = styled.button<{ $active: boolean }>`
+const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: boolean }>`
   position: relative;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme, $active }) => ($active ? theme.colors.primary : "transparent")};
+  background: ${({ theme, $active, $disabled }) =>
+    $disabled && $active
+      ? theme.colors.disabled
+      : $active
+        ? theme.colors.primary
+        : "transparent"};
   padding: ${({ theme }) => `${theme.spaces.space1}`};
   cursor: pointer;
-  border: ${({ $active, theme }) =>
-    $active ? theme.colors.primary : theme.colors.primaryLight};
-  outline: ${({ $active, theme }) =>
-    !$active ? `2px solid ${theme.colors.primaryLight}` : `none`};
+  border: none;
+  outline: ${({ $active, $disabled, $isError, theme }) =>
+    $isError
+      ? `2px solid ${theme.colors.error}`
+      : $disabled
+        ? `2px solid ${theme.colors.disabled}`
+        : !$active
+          ? `2px solid ${theme.colors.primaryLight}`
+          : `none`};
   border-radius: ${({ theme }) => theme.extra.radiusBig};
   text-align: center;
   color: ${({ theme, $active }) => ($active ? theme.colors.white : theme.colors.dark)};
@@ -90,7 +108,8 @@ const Tab = styled.button<{ $active: boolean }>`
     }
   }
   &:disabled {
-    color: ${({ theme }) => theme.colors.greyIcon};
+    color: ${({ theme, $disabled, $active }) =>
+      $disabled && $active ? theme.colors.white : theme.colors.disabled};
     cursor: not-allowed;
   }
   &::before {
@@ -101,7 +120,13 @@ const Tab = styled.button<{ $active: boolean }>`
     right: ${({ $active }) => ($active ? "-8px" : "-9px")};
     bottom: ${({ $active }) => ($active ? "-8px" : "-9px")};
     border-radius: ${({ theme }) => theme.extra.radiusRound};
-    border: 2px solid ${({ theme }) => `${theme.colors.primaryLight}`};
+    border: 2px solid
+      ${({ theme, $disabled, $isError }) =>
+        $isError
+          ? theme.colors.error
+          : $disabled
+            ? theme.colors.disabled
+            : `${theme.colors.primaryLight}`};
     z-index: -1;
   }
 
