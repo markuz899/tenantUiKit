@@ -68,7 +68,7 @@ const Wrapper = styled.div<{ $inline: boolean; $isError: boolean }>`
 
 const Tab = styled.button<{ $active: boolean }>`
   position: relative;
-  height: 45px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
