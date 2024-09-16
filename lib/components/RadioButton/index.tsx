@@ -79,7 +79,7 @@ const Tab = styled.button<{ $active: boolean }>`
     $active ? theme.colors.primary : theme.colors.primaryLight};
   outline: ${({ $active, theme }) =>
     !$active ? `2px solid ${theme.colors.primaryLight}` : `none`};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
   text-align: center;
   color: ${({ theme, $active }) => ($active ? theme.colors.white : theme.colors.dark)};
   .text {
@@ -96,12 +96,12 @@ const Tab = styled.button<{ $active: boolean }>`
   &::before {
     content: "";
     position: absolute;
-    top: ${({ $active }) => ($active ? "-8px" : "-10px")};
-    left: ${({ $active }) => ($active ? "-8px" : "-10px")};
-    right: ${({ $active }) => ($active ? "-8px" : "-10px")};
-    bottom: ${({ $active }) => ($active ? "-8px" : "-10px")};
-    border-radius: 25px;
-    border: 3px solid ${({ theme }) => `${theme.colors.primaryLight}`};
+    top: ${({ $active }) => ($active ? "-8px" : "-9px")};
+    left: ${({ $active }) => ($active ? "-8px" : "-9px")};
+    right: ${({ $active }) => ($active ? "-8px" : "-9px")};
+    bottom: ${({ $active }) => ($active ? "-8px" : "-9px")};
+    border-radius: ${({ theme }) => theme.extra.radiusRound};
+    border: 2px solid ${({ theme }) => `${theme.colors.primaryLight}`};
     z-index: -1;
   }
 

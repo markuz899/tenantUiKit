@@ -91,7 +91,7 @@ const defaultTheme = {
   extra: {
     logo: "80px",
     radius: "3px",
-    radiusBig: "8px",
+    radiusBig: "16px",
     radiusRound: "25px",
     transition: "0.5s",
     transitionFluid: "all 0.7s cubic-bezier(0.86, 0, 0.07, 1);",
