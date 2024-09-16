@@ -10,33 +10,29 @@ import styled, { css, useTheme } from "styled-components";
 import Icon from "../Icon";
 import { InputProps, InputRef } from "./interface";
 
-const Input = forwardRef<InputRef, InputProps>(
+const FileUpload = forwardRef<InputRef, InputProps>(
   (
     {
       type = "text",
+      multiple,
+      accept = ".jpg, .png, .pdf",
+      maxSize = 4,
       placeholder,
       value,
       defaultValue,
-      importantDefault,
       name,
       isError = false,
       isWarning = false,
       onChange,
       message,
-      showPasswordIcon,
-      icon,
+      icon = "upload",
       iconBefore,
       className,
       disabled,
-      readOnly,
+      readOnly = true,
       required,
-      enableControlledInput,
-      uppercase,
-      withFilter,
       autoComplete,
       inputSelectAction,
-      inputBgColor = "white",
-      rounded = false,
       clearable = false,
       ...rest
     },
@@ -44,12 +40,19 @@ const Input = forwardRef<InputRef, InputProps>(
   ) => {
     const theme = useTheme();
     const initialValue = defaultValue || value || "";
+    const inputUpload = useRef<HTMLInputElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const valueRef = useRef<string | undefined>(defaultValue);
+    const [sizeMax, setMaxSize] = useState(4 * 1024 * 1024);
     const [hasValue, setHasValue] = useState<boolean>(!!initialValue);
     const [state, setState] = useState<string>(initialValue);
-    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [_, setFileUpload] = useState<File | null>(null);
     const [focus, setFocus] = useState<boolean>(false);
+    const [errMessage, setErrorMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+      setMaxSize((maxSize || 4) * 1024 * 1024);
+    }, [maxSize]);
 
     useEffect(() => {
       if (defaultValue !== valueRef.current) {
@@ -66,24 +69,8 @@ const Input = forwardRef<InputRef, InputProps>(
       },
     }));
 
-    const text = importantDefault ? defaultValue : !enableControlledInput ? state : value;
-    const dataValue = !enableControlledInput ? hasValue : !!value;
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      let v = e.target.value;
-      if (uppercase) v = v.toUpperCase();
-      if (!enableControlledInput) {
-        setHasValue(!!v);
-        setState(v);
-      }
-      onChange && onChange({ value: v, name, type }, e);
-    };
-
-    const toggleSelectAction = () => {
-      const { visible, show, close } = inputSelectAction!;
-      if (visible) return close();
-      show();
-    };
+    const text = state || value;
+    const dataValue = hasValue || !!value;
 
     const clearInput = () => {
       setHasValue(false);
@@ -91,11 +78,59 @@ const Input = forwardRef<InputRef, InputProps>(
       onChange && onChange({ value: "", name, type });
     };
 
+    const handleClickContainer = () => {
+      if (inputUpload.current) {
+        inputUpload.current.click();
+      }
+    };
+
+    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0]) {
+        const files = e.target.files;
+        const filesArr = Array.from(e.target.files || []);
+        const validFiles: File[] = [];
+        let hasError = false;
+
+        filesArr.forEach((file: any) => {
+          if (file.size > sizeMax) {
+            setErrorMessage(
+              `Il file ${file.name} supera la dimensione massima di ${maxSize}MB.`,
+            );
+            hasError = true;
+          } else {
+            validFiles.push(file);
+          }
+        });
+
+        if (!hasError) {
+          setFileUpload(e.target.files[0]);
+          setState(files[0].name);
+          setHasValue(!!files[0].name);
+          console.log(files);
+          onChange && onChange({ value: files, name });
+          setErrorMessage(null);
+        }
+      }
+    };
+
+    const removeUpload = () => {
+      setFileUpload(null);
+      setState("");
+      setHasValue(false);
+      if (inputUpload.current && inputUpload.current.value) {
+        inputUpload.current.value = "";
+      }
+      onChange && onChange({ value: [], name });
+    };
+
     let after = icon && (
-      <After onClick={inputSelectAction ? toggleSelectAction : undefined}>
+      <After
+        className="cursor-pointer"
+        onClick={state.length ? removeUpload : handleClickContainer}
+      >
         <Icon
-          name={icon}
-          size={theme.font.size.normal}
+          name={state.length ? "trash" : icon}
+          size={state.length ? theme.spaces.space4 : theme.spaces.space5}
           color={disabled ? theme.colors.disabled : theme.colors.primary}
         />
       </After>
@@ -103,47 +138,30 @@ const Input = forwardRef<InputRef, InputProps>(
 
     let errorMessage = null;
 
-    if (showPasswordIcon) {
-      after = (
-        // eslint-disable-next-line
-        <span className="pointer" onClick={() => setShowPassword(!showPassword)}>
-          {showPassword ? (
-            <Icon
-              name="eye-not"
-              color={disabled ? theme.colors.disabled : theme.colors.primary}
-            />
-          ) : (
-            <Icon
-              name="eye"
-              color={disabled ? theme.colors.disabled : theme.colors.primary}
-            />
-          )}
-        </span>
-      );
-    }
-
-    if (type == "search" && state.length) {
-      after = (
-        <After className="cursor-pointer" onClick={clearInput}>
-          <Icon
-            name={"close-circular"}
-            size={theme.font.size.normal}
-            color={disabled ? theme.colors.disabled : theme.colors.primary}
-          />
-        </After>
-      );
-    }
-
     const cleared =
       clearable && text?.length ? (
         <After className="cursor-pointer" onClick={clearInput}>
           <Icon
             name={"close-circular"}
             size={theme.font.size.normal}
-            color={disabled ? theme.colors.disabled : theme.colors.primary}
+            color={theme.colors.primary}
           />
         </After>
       ) : null;
+
+    if (errMessage) {
+      errorMessage = (
+        <p className="error-msg text-error">
+          <Icon
+            name="warning-circular"
+            color={theme.colors.error}
+            margin="0 8px 0 0"
+            size="18px"
+          />
+          {errMessage}
+        </p>
+      );
+    }
 
     if (isError && message) {
       errorMessage = (
@@ -163,12 +181,9 @@ const Input = forwardRef<InputRef, InputProps>(
       type !== "hidden" && (
         <ContentBox className={className}>
           <Box
-            $rounded={rounded}
             $isError={isError || undefined}
             $isWarning={isWarning || undefined}
             $focus={focus}
-            withFilter={withFilter}
-            $inputBgColor={inputBgColor}
             $disabled={disabled}
           >
             {iconBefore && (
@@ -181,11 +196,17 @@ const Input = forwardRef<InputRef, InputProps>(
                 />
               </Before>
             )}
-            <Container>
+            <Container onClick={handleClickContainer}>
+              <input
+                ref={inputUpload}
+                multiple={multiple}
+                type="file"
+                onChange={handleUpload}
+                accept={accept}
+              />
               <input
                 ref={inputRef}
-                type={showPassword ? "text" : type}
-                onChange={handleChange}
+                type={type}
                 value={text || ""}
                 data-value={dataValue}
                 name={name}
@@ -214,11 +235,11 @@ const Input = forwardRef<InputRef, InputProps>(
   },
 );
 
-Input.displayName = "Input";
+FileUpload.displayName = "FileUpload";
 
-export default React.memo(Input);
+export default React.memo(FileUpload);
 
-Input.propTypes = {
+FileUpload.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func,
@@ -226,16 +247,12 @@ Input.propTypes = {
   message: PropTypes.string,
   icon: PropTypes.any,
   iconBefore: PropTypes.string,
-  showPasswordIcon: PropTypes.bool,
   name: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
-  enableControlledInput: PropTypes.bool,
   readOnly: PropTypes.bool,
-  uppercase: PropTypes.bool,
   type: PropTypes.string,
-  withFilter: PropTypes.bool,
 };
 
 const isError = css`
@@ -262,19 +279,16 @@ const ContentBox = styled.div`
 `;
 
 const Box = styled.div<{
-  $rounded: boolean;
   $isError: any;
   $isWarning: any;
   $focus: any;
-  withFilter?: boolean;
-  $inputBgColor?: string;
   $disabled?: boolean;
 }>`
   position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  min-height: ${({ theme }) => theme.spaces.space9};
+  min-height: ${({ theme }) => theme.spaces.space10};
   background: ${({ $disabled, theme }) =>
     $disabled ? theme.colors.whiteSmoke : theme.colors.white};
   width: 100%;
@@ -289,9 +303,12 @@ const Box = styled.div<{
             ? theme.colors.primary
             : theme.colors.disabled};
   ${({ $isError }) => $isError && isError}
-  border-radius: ${({ theme, $rounded }) =>
-    $rounded ? theme.extra.radiusRound : theme.extra.radiusBig};
+  border-radius: ${({ theme }) => theme.extra.radiusBig};
+  input[type="file"] {
+    display: none;
+  }
   input {
+    cursor: pointer;
     box-sizing: border-box;
     background: transparent;
     width: 100%;
@@ -299,7 +316,7 @@ const Box = styled.div<{
     color: ${({ theme }) => theme.colors.primaryDark};
     color: ${({ theme, $isWarning }) => $isWarning && theme.colors.warningDark};
     color: ${({ theme, $isError }) => $isError && theme.colors.error};
-    min-height: 34px;
+    min-height: ${({ theme }) => theme.spaces.space7};
     padding: 0;
     font-weight: ${({ theme }) => theme.font.weight.medium};
     font-size: ${({ theme }) => theme.font.size.normal};
@@ -309,18 +326,15 @@ const Box = styled.div<{
       outline: none;
     }
     &::placeholder {
-      color: ${({ withFilter, theme }) =>
-        withFilter ? theme.colors.black : theme.colors.lightGrey};
+      color: ${({ theme }) => theme.colors.lightGrey};
       font-size: ${({ theme }) => theme.font.size.normal};
     }
     &:-ms-input-placeholder {
-      color: ${({ withFilter, theme }) =>
-        withFilter ? theme.colors.black : theme.colors.lightGrey};
+      color: ${({ theme }) => theme.colors.lightGrey};
       font-size: ${({ theme }) => theme.font.size.normal};
     }
     &::-ms-input-placeholder {
-      color: ${({ withFilter, theme }) =>
-        withFilter ? theme.colors.black : theme.colors.lightGrey};
+      color: ${({ theme }) => theme.colors.lightGrey};
       font-size: ${({ theme }) => theme.font.size.normal};
     }
   }
@@ -365,7 +379,7 @@ const Box = styled.div<{
     pointer-events: all;
   }
 
-  input[type="search"]::-webkit-search-cancel-button {
+  input[type="file"]::-webkit-search-cancel-button {
     cursor: pointer;
     display: none;
   }

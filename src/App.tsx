@@ -29,6 +29,7 @@ import theme from "../theme";
 import icons from "../lib/components/Icon/icons";
 import { useState } from "react";
 import { Content } from "../theme/styled";
+import { FileUpload } from "../lib/components";
 
 function App() {
   const theme = useTheme();
@@ -207,6 +208,10 @@ function App() {
           name="name"
         />
       </Section>
+      <Section title="File upload">
+        <FileUpload placeholder="File da caricare" name="file" />
+        <FileUpload disabled placeholder="File da caricare" name="file" />
+      </Section>
       <Section title="New Datepicker">
         <DatePicker
           className="mt-6"
@@ -344,10 +349,11 @@ function App() {
       <Section title="Select">
         <Select
           name="city"
+          disabled
           onChange={() => {}}
           iconBefore="search"
           topPlaceholder="Seleziona città"
-          placeholder="Città"
+          placeholder="Seleziona la città"
           options={[
             { label: "Roma", value: "1" },
             { label: "Ancona", value: "2" },

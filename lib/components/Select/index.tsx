@@ -30,7 +30,7 @@ const Select: React.FC<SelectProps> = ({
   clearable = false,
   width,
 }) => {
-  const [disable, setDisable] = useState(disabled || false);
+  const [disable, setDisable] = useState(disabled);
   const [state, setState] = useState<string | string[]>(value);
   const [values, setValues] = useState<string[]>(defaultValues || []);
   const [hover, setHover] = useState(-1);
@@ -44,6 +44,10 @@ const Select: React.FC<SelectProps> = ({
   useEffect(() => {
     setState(value);
   }, [value]);
+
+  useEffect(() => {
+    setDisable(disabled);
+  }, [disabled, options]);
 
   useEffect(() => {
     setFiltered(options);
@@ -72,11 +76,6 @@ const Select: React.FC<SelectProps> = ({
 
         if (target && state !== target.label) {
           setState(target.label);
-          if (disabled && !disable) {
-            setDisable(disabled || false);
-          }
-        } else if (!target && disable) {
-          setDisable(false);
         }
       }
     }

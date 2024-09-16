@@ -212,6 +212,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
         type="text"
         autoComplete="off"
         icon={"calendar"}
+        disabled={disabled}
         placeholder={placeholder}
         topPlaceholder={topPlaceholder}
         defaultValue={renderLabel}

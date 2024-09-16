@@ -14,6 +14,7 @@ import Clicker from "./Clicker";
 import Modal from "./Modal";
 import DatePicker from "./DatePicker";
 import Carousel from "./Carousel";
+import FileUpload from "./FileUpload";
 import Loader from "./Loader";
 import Pagination from "./PaginationTable";
 import Table from "./Table";
@@ -40,6 +41,7 @@ export {
   Dropdown,
   Accordion,
   AccordionBox,
+  FileUpload,
   Rating,
   Badge,
   Banner,
