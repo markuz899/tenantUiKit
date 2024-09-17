@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Icon from "../Icon";
 
 const ReadMore = ({
   text,
@@ -30,7 +31,17 @@ const ReadMore = ({
             }
           }}
         >
-          {isReadMore ? "...leggi di più" : " ...mostra meno"}
+          {isReadMore ? (
+            <ReadMoreContent>
+              mostra di più
+              <Icon name="arrow-down" />
+            </ReadMoreContent>
+          ) : (
+            <ReadMoreContent>
+              mostra di meno
+              <Icon name="arrow-top" />
+            </ReadMoreContent>
+          )}
         </span>
       )}
     </ReadStyle>
@@ -43,5 +54,17 @@ const ReadStyle = styled.p`
   line-height: 1.3;
   span {
     cursor: pointer;
+  }
+`;
+
+const ReadMoreContent = styled.span`
+  gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+  color: ${({ theme }) => theme.colors.primary};
+  svg {
+    fill: ${({ theme }) => theme.colors.primary};
   }
 `;

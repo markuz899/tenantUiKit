@@ -1,4 +1,5 @@
-import { useTheme } from "styled-components";
+import { useState } from "react";
+import styled, { useTheme } from "styled-components";
 import {
   Accordion,
   Badge,
@@ -24,17 +25,15 @@ import {
   Tooltip,
   WordChanger,
 } from "../lib";
-import styled from "styled-components";
-import theme from "../theme";
-import icons from "../lib/components/Icon/icons";
-import { useState } from "react";
-import { Content } from "../theme/styled";
 import { FileUpload } from "../lib/components";
+import icons from "../lib/components/Icon/icons";
+import theme from "../theme";
+import { Content } from "../theme/styled";
 
 function App() {
   const theme = useTheme();
 
-  let allIcon = Object.keys(icons);
+  const allIcon = Object.keys(icons);
   const [loaderActive, setLoaderActive] = useState<any>(false);
   const [loaderType, setLoaderType] = useState<any>("spin");
   const words = ["testo", "forma", "colore"];
@@ -122,10 +121,42 @@ function App() {
         <Badge label={"Badge info"} kind="info" onClick={() => alert("Close click")} />
       </Section>
       <Section title="Banner">
-        <Banner active={true} kind={"info"} title={"Info banner"} />
-        <Banner active={true} kind={"success"} title={"Success banner"} />
-        <Banner active={true} kind={"warning"} title={"Warning banner"} />
-        <Banner active={true} kind={"error"} title={"Error banner"} />
+        <Banner kind={"warning"} closable>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada pretium
+          turpis at porttitor. Donec pretium est odio, a lacinia libero euismod eget. Orci
+          varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Nam sem est, consectetur in pharetra ut, volutpat in quam. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Curabitur eu est sem. Ut
+          venenatis nibh eu erat varius molestie. Praesent scelerisque lorem purus. Sed
+          eros purus, efficitur ullamcorper libero eu, convallis scelerisque libero.
+        </Banner>
+        <Banner kind={"success"} readMore>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada pretium
+          turpis at porttitor. Donec pretium est odio, a lacinia libero euismod eget. Orci
+          varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Nam sem est, consectetur in pharetra ut, volutpat in quam. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Curabitur eu est sem. Ut
+          venenatis nibh eu erat varius molestie. Praesent scelerisque lorem purus. Sed
+          eros purus, efficitur ullamcorper libero eu, convallis scelerisque libero.
+        </Banner>
+        <Banner kind={"light-error"} readMore>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada pretium
+          turpis at porttitor. Donec pretium est odio, a lacinia libero euismod eget. Orci
+          varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Nam sem est, consectetur in pharetra ut, volutpat in quam. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Curabitur eu est sem. Ut
+          venenatis nibh eu erat varius molestie. Praesent scelerisque lorem purus. Sed
+          eros purus, efficitur ullamcorper libero eu, convallis scelerisque libero.
+        </Banner>
+        <Banner kind={"error"}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada pretium
+          turpis at porttitor. Donec pretium est odio, a lacinia libero euismod eget. Orci
+          varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Nam sem est, consectetur in pharetra ut, volutpat in quam. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Curabitur eu est sem. Ut
+          venenatis nibh eu erat varius molestie. Praesent scelerisque lorem purus. Sed
+          eros purus, efficitur ullamcorper libero eu, convallis scelerisque libero.
+        </Banner>
       </Section>
       <Section title="Buttons">
         <div className="flex flex-col gap-3">

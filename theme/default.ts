@@ -91,6 +91,7 @@ const defaultTheme = {
   extra: {
     logo: "80px",
     radius: "3px",
+    radiusNormal: "12px",
     radiusBig: "16px",
     radiusRound: "25px",
     radiusRoundXL: "48px",

@@ -90,6 +90,7 @@ export interface ITheme {
   extra: {
     logo?: string;
     radius?: string;
+    radiusNormal?: string;
     radiusBig?: string;
     radiusRound?: string;
     radiusRoundXL?: string;
