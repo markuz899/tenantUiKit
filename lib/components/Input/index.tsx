@@ -326,7 +326,7 @@ const Box = styled.div<{
   }
   input:focus + label,
   input:not([data-value="false"]) + label {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
     font-size: ${({ theme }) => theme.font.size.small};
   }
   input:-webkit-autofill,
@@ -341,7 +341,7 @@ const Box = styled.div<{
   }
   input:-webkit-autofill + label,
   input:-webkit-autofill:focus + label {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
   }
   input:disabled {
     cursor: default;
@@ -399,7 +399,7 @@ const Label = styled.label<{
   $disabled?: boolean;
 }>`
   position: absolute;
-  top: 15px;
+  top: 12px;
   left: ${({ $iconBefore, theme }) => ($iconBefore ? theme.spaces.space7 : "12px")};
   right: auto;
   max-width: 100%;
