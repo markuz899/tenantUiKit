@@ -211,7 +211,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border-radius: ${({ theme, $round }: any) =>
     $round ? theme.extra.radiusRoundXL : theme.extra.radius};
   ${(props) => KIND[props.kind]}
-  margin-bottom: 5px;
   span {
     display: flex;
   }
