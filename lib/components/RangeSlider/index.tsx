@@ -22,9 +22,11 @@ const RangeSlider = ({
   min = 1,
   max = 100,
   step = 1,
-  defaultValue = 10,
+  defaultValue,
   onChange,
   disabled = false,
+  steps,
+  stepsFormat,
 }: {
   min?: number;
   max?: number;
@@ -32,8 +34,10 @@ const RangeSlider = ({
   onChange?: any;
   defaultValue?: number;
   disabled?: boolean;
+  steps?: any[];
+  stepsFormat?: string;
 }) => {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue || min);
   const slideStyle = genSlideStyle(value, min, max);
 
   const handleChange = (e: any) => {
@@ -41,11 +45,21 @@ const RangeSlider = ({
     onChange({ name: "", value: e.target.value });
   };
 
+  const renderSteps = () => {
+    return steps?.map((item) => {
+      return (
+        <span key={item}>
+          {item.toLocaleString("it-IT")} {stepsFormat}
+        </span>
+      );
+    });
+  };
+
   return (
     <Range>
       <div className="content-range">
+        {(steps?.length && <div className="content-steps">{renderSteps()}</div>) || null}
         <Track />
-
         <Bullet right="10%" />
         <Bullet right="20%" />
         <Bullet right="30%" />
@@ -79,6 +93,16 @@ const Range = styled.div`
   position: relative;
   padding: 10px 0;
   margin: 30px 20px 0;
+  .content-range {
+    .content-steps {
+      position: absolute;
+      width: 100%;
+      top: -30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
 `;
 
 const RangeSlide = styled.input`
