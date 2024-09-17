@@ -65,7 +65,7 @@ const defaultTheme = {
       bold: "700",
     },
     family: {
-      mont: "QuickSand",
+      primary: "QuickSand",
     },
   },
   spaces: {

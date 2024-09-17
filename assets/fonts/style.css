@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "QuickSand";
+  src: url("Quicksand-VariableFont_wght.eot");
+  src: local("Raleway Medium"), local("Quicksand-VariableFont_wght"),
+    url("Quicksand-VariableFont_wght.eot?#iefix") format("embedded-opentype"),
+    url("Quicksand-VariableFont_wght.woff2") format("woff2"),
+    url("Quicksand-VariableFont_wght.woff") format("woff"),
+    url("Quicksand-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
