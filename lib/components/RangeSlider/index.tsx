@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-
-const steps = ["26000", "100000", "200000", "300000", "400000"];
 
 const calculatePercentage = (value: number, min: number, max: number) => {
   return ((value - min) / (max - min)) * 100;
@@ -24,14 +22,18 @@ const RangeSlider = ({
   min = 1,
   max = 100,
   step = 1,
+  defaultValue = 10,
   onChange,
+  disabled = false,
 }: {
   min?: number;
   max?: number;
   step?: number;
   onChange?: any;
+  defaultValue?: number;
+  disabled?: boolean;
 }) => {
-  const [value, setValue] = useState(min);
+  const [value, setValue] = useState(defaultValue);
   const slideStyle = genSlideStyle(value, min, max);
 
   const handleChange = (e: any) => {
@@ -54,9 +56,10 @@ const RangeSlider = ({
         <Bullet right="80%" />
         <Bullet right="90%" />
 
-        <RangeValue style={slideStyle.range} />
-        <Circle style={slideStyle.point} />
+        <RangeValue $disabled={disabled} style={slideStyle.range} />
+        <Circle $disabled={disabled} style={slideStyle.point} />
         <RangeSlide
+          disabled={disabled}
           name="range"
           type="range"
           min={min}
@@ -109,26 +112,29 @@ const RangeSlide = styled.input`
   }
 `;
 
-const Circle = styled.span`
+const Circle = styled.span<{ $disabled?: boolean }>`
   position: absolute;
   top: -3px;
   width: 16px;
   height: 16px;
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
-  border: solid 5px ${({ theme }) => theme.colors.primary};
+  border: solid 5px
+    ${({ theme, $disabled }) =>
+      $disabled ? theme.colors.disabled : theme.colors.primary};
   background: white;
   display: inline-block;
 `;
 
-const RangeValue = styled.span`
+const RangeValue = styled.span<{ $disabled?: boolean }>`
   position: absolute;
   top: 5px;
   left: 0;
   display: inline-block;
   width: 20%;
   height: 10px;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme, $disabled }) =>
+    $disabled ? theme.colors.disabled : theme.colors.primary};
   border-radius: 10px 0 0 10px;
 `;
 
