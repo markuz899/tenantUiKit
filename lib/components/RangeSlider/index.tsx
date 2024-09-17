@@ -1,102 +1,170 @@
-import React, { useRef, useState, useEffect } from "react";
-import styled, { useTheme } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-interface RangeSliderProps {
-  name?: string;
-  className?: string;
+const steps = ["26000", "100000", "200000", "300000", "400000"];
+
+const calculatePercentage = (value: number, min: number, max: number) => {
+  return ((value - min) / (max - min)) * 100;
+};
+
+const genSlideStyle = (value: number, min: number, max: number) => {
+  const percentage = calculatePercentage(value, min, max);
+
+  return {
+    point: {
+      left: `calc(${percentage}% - ${10}px)`,
+    },
+    range: {
+      width: `calc(${percentage}%)`,
+    },
+  };
+};
+
+const RangeSlider = ({
+  min = 1,
+  max = 100,
+  step = 1,
+  onChange,
+}: {
   min?: number;
   max?: number;
   step?: number;
-  defaultValue?: number;
-  value?: number;
   onChange?: any;
-}
-
-const RangeSlider: React.FC<RangeSliderProps> = ({
-  name = "range",
-  className,
-  min = 1,
-  max = 10,
-  step = 1,
-  defaultValue,
-  value,
-  onChange,
 }) => {
-  const theme = useTheme();
+  const [value, setValue] = useState(min);
+  const slideStyle = genSlideStyle(value, min, max);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [state, setState] = useState<number>(value || defaultValue || min);
-
-  // Aggiorna lo sfondo dello slider quando il valore cambia
-  useEffect(() => {
-    if (inputRef.current) {
-      const el = inputRef.current;
-      const percentage = ((state - min) / (max - min)) * 100;
-      el.style.background = `linear-gradient(to right, ${theme.colors.primaryLight}61 ${percentage}%, ${theme.colors.white} ${percentage}%)`;
-    }
-  }, [state, min, max]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(event.target.value, 10);
-    setState(newValue);
-
-    if (onChange) {
-      onChange({ name, value: newValue });
-    }
+  const handleChange = (e: any) => {
+    setValue(e.target.value);
+    onChange({ name: "", value: e.target.value });
   };
 
   return (
-    <SliderContainer className={className}>
-      <input
-        ref={inputRef}
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={state}
-        onChange={handleChange}
-      />
-    </SliderContainer>
+    <Range>
+      <div className="content-range">
+        <Track />
+
+        <Bullet right="10%" />
+        <Bullet right="20%" />
+        <Bullet right="30%" />
+        <Bullet right="40%" />
+        <Bullet right="50%" />
+        <Bullet right="60%" />
+        <Bullet right="70%" />
+        <Bullet right="80%" />
+        <Bullet right="90%" />
+
+        <RangeValue style={slideStyle.range} />
+        <Circle style={slideStyle.point} />
+        <RangeSlide
+          name="range"
+          type="range"
+          min={min}
+          max={max}
+          value={value}
+          step={step}
+          onChange={handleChange}
+        />
+      </div>
+    </Range>
   );
 };
 
 export default RangeSlider;
 
-const SliderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+const Range = styled.div`
+  position: relative;
+  padding: 10px 0;
+  margin: 30px 20px 0;
+`;
 
-  input[type="range"] {
-    background: ${`linear-gradient(to right, ${({ theme }: any) => theme.colors.primaryLight}61 0%, ${({ theme }: any) => theme.colors.white} 0%)`};
-    width: 100%;
-    height: ${({ theme }) => theme.spaces.space2};
-    outline: none;
-    transition: background 450ms ease-in;
-    border: 2px solid ${({ theme }) => theme.colors.primary};
-    border-radius: ${({ theme }) => theme.extra.radiusBig};
-    &::-webkit-slider-thumb {
-      border-radius: 50px;
-      width: ${({ theme }) => theme.spaces.space4};
-      height: ${({ theme }) => theme.spaces.space4};
-      background-color: ${({ theme }) => theme.colors.primary};
-      border: 2px solid ${({ theme }) => theme.colors.primaryLight};
-      cursor: pointer;
-      -webkit-appearance: none;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-      &:hover {
-        background: ${({ theme }) => theme.colors.primaryDark};
-      }
-      &:active {
-        cursor: grab;
-      }
-    }
-    &:disabled {
-      background: ${({ theme }) => theme.colors.greyIcon};
+const RangeSlide = styled.input`
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  left: 0;
+  top: -3px;
+  z-index: 9;
+  outline: none;
+  opacity: 0;
+
+  ::-ms-expand {
+    display: none;
+  }
+
+  ::-ms-clear {
+    display: none;
+  }
+
+  ::-webkit-slider-thumb {
+    width: 35px;
+    height: 35px;
+    margin: -3px 0 0 -3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+`;
+
+const Circle = styled.span`
+  position: absolute;
+  top: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
+  border: solid 5px ${({ theme }) => theme.colors.primary};
+  background: white;
+  display: inline-block;
+`;
+
+const RangeValue = styled.span`
+  position: absolute;
+  top: 5px;
+  left: 0;
+  display: inline-block;
+  width: 20%;
+  height: 10px;
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 10px 0 0 10px;
+`;
+
+const Track = styled.div`
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  background: ${({ theme }) => theme.colors.disabled};
+  top: 9px;
+`;
+
+const Bullet = styled.span<{ right: any }>`
+  position: absolute;
+  top: 7px;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: ${({ theme }) => theme.colors.disabled};
+  border-radius: 50%;
+  &:nth-of-type(odd) {
+    background: ${({ theme }) => theme.colors.primaryLight};
+  }
+  ${({ right }) => right && `right: ${right};`}
+`;
+
+const BulletLabel = styled.span<{ right?: any }>`
+  position: absolute;
+  top: -30px;
+  display: inline-block;
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.dark};
+  ${({ right }) => right && `right: ${right};`}
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    &.first,
+    &.last {
+      display: none;
     }
   }
 `;

@@ -434,7 +434,7 @@ function App() {
         <QuantitySelect value={5} />
       </Section>
       <Section title="Range slider">
-        <RangeSlider min={1} max={100} />
+        <RangeSlider min={1} max={100} step={1} onChange={(d: any) => console.log(d)} />
       </Section>
       <Section title="Loader">
         <Checkbox
