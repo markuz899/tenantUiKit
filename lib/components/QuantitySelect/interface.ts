@@ -1,6 +1,6 @@
 export interface QuantitySelectProps {
   className?: string;
-  disabledInput?: boolean;
+  disabled?: boolean;
   min?: number;
   max?: number;
   value?: number;

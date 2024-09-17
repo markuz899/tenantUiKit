@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import { QuantitySelectProps } from "./interface";
-import { Button, Icon } from "..";
+import Button from "../Button";
 
 const QuantitySelect: React.FC<QuantitySelectProps> = ({
   className,
-  disabledInput,
+  disabled,
   min = 1,
   max = 10,
   value = 0,
@@ -56,28 +56,30 @@ const QuantitySelect: React.FC<QuantitySelectProps> = ({
   return (
     <StyledQuantity className={className} width={width}>
       <div className="child auto left">
-        <Button kind="primary" onClick={handleLess} disabled={defaultValue === 1}>
-          <Icon
-            name={defaultValue === 1 ? "disabled" : "less"}
-            size={theme.spaces.space3}
-          />
-        </Button>
+        <Button
+          kind="inverse-primary"
+          onClick={handleLess}
+          disabled={disabled || defaultValue === 1}
+          icon={defaultValue === 1 ? "disabled" : "less"}
+          iconSize={theme.spaces.space3}
+        />
       </div>
       <div className="child">
         <input
-          disabled={disabledInput}
+          disabled={disabled}
           onChange={handleChange}
           type="text"
           value={defaultValue}
         />
       </div>
       <div className="child auto right">
-        <Button kind="primary" onClick={handlePlus} disabled={defaultValue === max}>
-          <Icon
-            name={defaultValue === max ? "disabled" : "plus"}
-            size={theme.spaces.space3}
-          />
-        </Button>
+        <Button
+          kind="inverse-primary"
+          onClick={handlePlus}
+          disabled={disabled || defaultValue === max}
+          icon={defaultValue === max ? "disabled" : "plus"}
+          iconSize={theme.spaces.space3}
+        />
       </div>
     </StyledQuantity>
   );
@@ -93,17 +95,12 @@ const StyledQuantity = styled.div<StyledQuantityProps>`
   width: ${(p) => (p.width ? p.width : "100%")};
   display: flex;
   align-items: center;
+  gap: 8px;
   .child {
-    width: 100%;
     text-align: center;
+    width: ${(p) => (p.width ? p.width : "auto")};
     &.auto {
       width: auto;
-      &.left {
-        margin-right: ${({ theme }) => theme.spaces.space4};
-      }
-      &.right {
-        margin-left: ${({ theme }) => theme.spaces.space4};
-      }
     }
     input[type="text"] {
       border-radius: ${({ theme }) => theme.extra.radiusBig};
@@ -115,14 +112,17 @@ const StyledQuantity = styled.div<StyledQuantityProps>`
       flex-grow: 1;
       font-size: ${({ theme }) => theme.font.size.normal};
       background: ${({ theme }) => theme.colors.white};
-      border: 2px solid ${({ theme }) => theme.colors.primary};
+      border: 1px solid ${({ theme }) => theme.colors.disabled};
       &:disabled {
-        background: ${({ theme }) => theme.colors.greyIcon};
-        color: ${({ theme }) => theme.colors.dark};
+        background: ${({ theme }) => theme.colors.whiteSmoke};
+        color: ${({ theme }) => theme.colors.grey};
       }
       &:focus {
         outline: none;
       }
+    }
+    button {
+      margin-bottom: 0;
     }
   }
 `;
