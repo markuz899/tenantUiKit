@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css, useTheme } from "styled-components";
+import styled, { css } from "styled-components";
 import Icon from "../Icon";
 import ReadMore from "../ReadMore";
 import { BannerProps } from "./interface";
@@ -16,8 +16,6 @@ const Banner: React.FC<BannerProps> = ({
   readMore = false,
   max = 100,
 }) => {
-  const theme = useTheme();
-
   const safeContent = typeof content === "string" ? content : "";
 
   const inner = children

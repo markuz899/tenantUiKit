@@ -103,6 +103,13 @@ const Range = styled.div`
       justify-content: space-between;
     }
   }
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    .content-range {
+      .content-steps {
+        font-size: ${({ theme }) => theme.font.size.minor};
+      }
+    }
+  }
 `;
 
 const RangeSlide = styled.input`
@@ -182,19 +189,4 @@ const Bullet = styled.span<{ right: any }>`
     background: ${({ theme }) => theme.colors.primaryLight};
   }
   ${({ right }) => right && `right: ${right};`}
-`;
-
-const BulletLabel = styled.span<{ right?: any }>`
-  position: absolute;
-  top: -30px;
-  display: inline-block;
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.dark};
-  ${({ right }) => right && `right: ${right};`}
-  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    &.first,
-    &.last {
-      display: none;
-    }
-  }
 `;
