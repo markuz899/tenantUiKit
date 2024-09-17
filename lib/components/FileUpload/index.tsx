@@ -123,7 +123,7 @@ const FileUpload = forwardRef<InputRef, InputProps>(
       onChange && onChange({ value: [], name });
     };
 
-    let after = icon && (
+    const after = icon && (
       <After
         className="cursor-pointer"
         onClick={state.length ? removeUpload : handleClickContainer}
