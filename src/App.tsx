@@ -295,7 +295,6 @@ function App() {
           options={[
             { label: "One", value: 1 },
             { label: "Two", value: 2 },
-            { label: "Three", value: 3 },
           ]}
           onChange={(d) => {
             console.log(d);

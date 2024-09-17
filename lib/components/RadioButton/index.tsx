@@ -61,19 +61,16 @@ export default RadioButton;
 const Wrapper = styled.div<{ $inline: boolean; $isError: boolean; $disabled: boolean }>`
   width: 100%;
   .content {
-    margin: 0 auto;
+    box-sizing: border-box;
     width: 100%;
     display: flex;
+    justify-content: space-between;
     flex-direction: ${(props) => (props.$inline ? "row" : "column")};
-    gap: ${({ theme }) => theme.spaces.space6};
     button {
       min-width: 100px;
     }
   }
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    .content {
-      flex-wrap: wrap;
-    }
   }
 `;
 
@@ -81,7 +78,7 @@ const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: bool
   position: relative;
   width: 100%;
   height: 40px;
-  margin: ${({ theme }) => theme.spaces.space2};
+  margin: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +88,6 @@ const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: bool
       : $active
         ? theme.colors.primary
         : "transparent"};
-  padding: ${({ theme }) => `${theme.spaces.space1}`};
   cursor: pointer;
   border: none;
   outline: ${({ $active, $disabled, $isError, theme }) =>
