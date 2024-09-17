@@ -105,6 +105,7 @@ const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: bool
   border-radius: ${({ theme }) => theme.extra.radiusBig};
   text-align: center;
   color: ${({ theme, $active }) => ($active ? theme.colors.white : theme.colors.dark)};
+  transition: all 0.5s;
   .text {
     p {
       margin: 0;
@@ -120,10 +121,10 @@ const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: bool
   &::before {
     content: "";
     position: absolute;
-    top: ${({ $active }) => ($active ? "-8px" : "-9px")};
-    left: ${({ $active }) => ($active ? "-8px" : "-9px")};
-    right: ${({ $active }) => ($active ? "-8px" : "-9px")};
-    bottom: ${({ $active }) => ($active ? "-8px" : "-9px")};
+    top: ${({ $active }) => ($active ? "-8px" : "-8px")};
+    left: ${({ $active }) => ($active ? "-8px" : "-8px")};
+    right: ${({ $active }) => ($active ? "-8px" : "-8px")};
+    bottom: ${({ $active }) => ($active ? "-8px" : "-8px")};
     border-radius: ${({ theme }) => theme.extra.radiusRound};
     border: 2px solid
       ${({ theme, $disabled, $isError }) =>
