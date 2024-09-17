@@ -97,7 +97,7 @@ const Wrapper = styled.div`
 const Slider = styled.label<{ $disabled: boolean }>`
   position: relative;
   display: inline-block;
-  width: ${({ theme }) => theme.spaces.space10};
+  width: ${({ theme }) => theme.spaces.space8};
   height: ${({ theme }) => theme.spaces.space5};
   > input {
     opacity: 0;
@@ -115,10 +115,10 @@ const SliderInput = styled.input<{ $colorBg?: string; $disabled: boolean }>`
     box-shadow: 0 0 1px #2196f3;
   }
   &:checked + .sliderBg {
-    background-color: ${(props) => props.$colorBg};
-    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
+    background-color: ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
     &:before {
-      transform: translateX(25px);
+      transform: translateX(17px);
       background-color: ${({ theme }) => theme.colors.white};
     }
   }
@@ -144,28 +144,19 @@ const SliderSpan = styled.span<{
   border: 2px solid
     ${(p) =>
       p.$disabled
-        ? ({ theme }) => theme.colors.greyIcon
+        ? ({ theme }) => theme.colors.disabled
         : ({ theme }) => theme.colors.greyIcon};
   opacity: 1;
   &:before {
     position: absolute;
     content: "";
-    height: 19px;
-    width: 19px;
+    height: 17px;
+    width: 17px;
     left: 1px;
-    bottom: 1px;
+    bottom: 2px;
     background-color: ${({ theme }) => theme.colors.white};
     transition: 0.4s;
     border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-  }
-  &:hover {
-    border-color: ${({ $disabled }) =>
-      $disabled ? "inherit" : ({ theme }) => theme.colors.primaryDark};
-  }
-  &.clicked {
-    transition: none;
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}60;
   }
 `;
 

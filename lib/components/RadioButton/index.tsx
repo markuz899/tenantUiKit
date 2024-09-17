@@ -65,17 +65,23 @@ const Wrapper = styled.div<{ $inline: boolean; $isError: boolean; $disabled: boo
     width: 100%;
     display: flex;
     flex-direction: ${(props) => (props.$inline ? "row" : "column")};
-    flex-wrap: wrap;
-    gap: ${({ theme }) => theme.spaces.space5};
+    gap: ${({ theme }) => theme.spaces.space6};
     button {
       min-width: 100px;
+    }
+  }
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    .content {
+      flex-wrap: wrap;
     }
   }
 `;
 
 const Tab = styled.button<{ $isError: boolean; $active: boolean; $disabled: boolean }>`
   position: relative;
+  width: 100%;
   height: 40px;
+  margin: ${({ theme }) => theme.spaces.space2};
   display: flex;
   align-items: center;
   justify-content: center;

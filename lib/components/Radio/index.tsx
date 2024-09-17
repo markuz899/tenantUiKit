@@ -93,8 +93,12 @@ const Option = styled.div<{ active: any; disabled: boolean }>`
   align-items: center;
   cursor: pointer;
   .selector {
-    background: ${({ disabled, theme }) =>
-      disabled ? theme.colors.greyIcon : "transparent"};
+    background: ${({ disabled, active, theme }) =>
+      disabled
+        ? theme.colors.disabled
+        : active
+          ? theme.colors.primary
+          : theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.primary};
     display: flex;
     justify-content: center;
@@ -109,11 +113,10 @@ const Option = styled.div<{ active: any; disabled: boolean }>`
     }
     &:after {
       content: "";
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      background: ${({ active, theme }) =>
-        active ? theme.colors.primary : "transparent"};
+      background: ${({ active, theme }) => (active ? theme.colors.white : "transparent")};
     }
   }
   span {
