@@ -30,6 +30,7 @@ import Textarea from "./Textarea";
 import Toggle from "./Toggle";
 import Tooltip from "./Tooltip";
 import WordChanger from "./WordChanger";
+import BannerCompose from "./BannerCompose";
 
 export {
   Button,
@@ -52,7 +53,6 @@ export {
   Popover,
   QuantitySelect,
   RadioButton,
-  RangeSlider,
   ScrollToTop,
   SliderTabs,
   Slideshow,
@@ -60,6 +60,8 @@ export {
   Toggle,
   Tooltip,
   WordChanger,
+  BannerCompose,
+  RangeSlider,
   ReadMore,
   Loader,
   Carousel,

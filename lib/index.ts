@@ -31,6 +31,7 @@ import {
   Toggle,
   Tooltip,
   WordChanger,
+  BannerCompose,
 } from "./components";
 // context
 import { ThemeProvider } from "./contexts/themeContext";
@@ -56,7 +57,6 @@ export {
   Popover,
   QuantitySelect,
   RadioButton,
-  RangeSlider,
   ScrollToTop,
   SliderTabs,
   Slideshow,
@@ -64,6 +64,8 @@ export {
   Toggle,
   Tooltip,
   WordChanger,
+  BannerCompose,
+  RangeSlider,
   ReadMore,
   Loader,
   Carousel,

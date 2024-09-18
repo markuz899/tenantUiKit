@@ -194,6 +194,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   padding: 0 ${({ icon }) => (icon ? "0" : "24px")};
   font-size: ${({ theme }) => theme.font.size.normal};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   text-transform: uppercase;
   display: flex;
   justify-content: ${({ icon }) => (icon ? "center" : "space-between")};
@@ -214,6 +215,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   span {
     display: flex;
   }
+  flex-shrink: 0;
 `;
 
 export const A = styled(StyledButton)`

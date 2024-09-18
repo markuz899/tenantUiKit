@@ -4,6 +4,7 @@ import {
   Accordion,
   Badge,
   Banner,
+  BannerCompose,
   Button,
   Checkbox,
   DatePicker,
@@ -157,6 +158,37 @@ function App() {
           venenatis nibh eu erat varius molestie. Praesent scelerisque lorem purus. Sed
           eros purus, efficitur ullamcorper libero eu, convallis scelerisque libero.
         </Banner>
+      </Section>
+      <Section title="Banner Compose">
+        <BannerCompose
+          kind="warning"
+          title="Definizione di Persona fisica  con qualifica di Persona Politicamente Esposta “PEP”"
+        >
+          <ul>
+            <li>
+              Elemento non numerato 1
+              <ol>
+                <li>Elemento numerato 1.1</li>
+                <li>
+                  Elemento numerato 1.2
+                  <ul>
+                    <li>Elemento non numerato 1.2.1</li>
+                    <li>Elemento non numerato 1.2.2</li>
+                  </ul>
+                </li>
+                <li>Elemento numerato 1.3</li>
+              </ol>
+            </li>
+            <li>Elemento non numerato 2</li>
+            <li>
+              Elemento non numerato 3
+              <ol>
+                <li>Elemento numerato 3.1</li>
+                <li>Elemento numerato 3.2</li>
+              </ol>
+            </li>
+          </ul>
+        </BannerCompose>
       </Section>
       <Section title="Buttons">
         <div className="flex flex-col gap-3">
