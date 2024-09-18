@@ -6,6 +6,7 @@ export interface InputProps {
   defaultValue?: string;
   name?: string;
   isError?: boolean;
+  hint?: string;
   isWarning?: boolean;
   onChange?: any;
   message?: string;

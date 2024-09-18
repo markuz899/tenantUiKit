@@ -384,6 +384,9 @@ function App() {
           iconBefore="search"
           topPlaceholder="Seleziona città"
           placeholder="Seleziona la città"
+          isError={true}
+          message="Errore generico"
+          hint="Suggerimento per completare"
           options={[
             { label: "Roma", value: "1" },
             { label: "Ancona", value: "2" },

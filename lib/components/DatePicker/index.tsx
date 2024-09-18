@@ -34,6 +34,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
   endMonth,
   placeholder = "GG/MM/AAAA",
   topPlaceholder,
+  isError,
+  message,
+  hint,
 }) => {
   const [onlyRead, setOnlyRead] = useState(readOnly);
   const [selected, setSelected] = useState<Date>();
@@ -217,6 +220,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
         topPlaceholder={topPlaceholder}
         defaultValue={renderLabel}
         onChange={handleInputChange}
+        isError={isError}
+        message={message}
+        hint={hint}
       />
     </Target>
   );

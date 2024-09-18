@@ -11,6 +11,7 @@ export interface SelectProps {
   iconBefore?: string;
   enableInput?: boolean;
   onClose?: () => void;
+  hint?: string;
   isError?: boolean;
   message?: string;
   value?: string | string[];

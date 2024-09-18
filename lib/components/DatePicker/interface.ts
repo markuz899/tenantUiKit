@@ -16,4 +16,7 @@ export interface DatePickerProps {
   range?: boolean;
   placeholder?: string;
   topPlaceholder?: string;
+  isError?: boolean;
+  message?: string;
+  hint?: string;
 }

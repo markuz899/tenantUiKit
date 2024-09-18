@@ -20,6 +20,7 @@ const Input = forwardRef<InputRef, InputProps>(
       importantDefault,
       name,
       isError = false,
+      hint,
       isWarning = false,
       onChange,
       message,
@@ -102,6 +103,7 @@ const Input = forwardRef<InputRef, InputProps>(
     );
 
     let errorMessage = null;
+    let hintMessage = null;
 
     if (showPasswordIcon) {
       after = (
@@ -159,6 +161,10 @@ const Input = forwardRef<InputRef, InputProps>(
       );
     }
 
+    if (hint) {
+      hintMessage = <p className="hint-msg">{hint}</p>;
+    }
+
     return (
       type !== "hidden" && (
         <ContentBox className={className}>
@@ -208,6 +214,7 @@ const Input = forwardRef<InputRef, InputProps>(
             {after}
           </Box>
           {errorMessage}
+          {hintMessage}
         </ContentBox>
       )
     );
@@ -249,6 +256,7 @@ const ContentBox = styled.div`
   box-sizing: border-box;
   width: 100%;
   .error-msg {
+    margin-bottom: 4px;
     background: ${({ theme }) => theme.colors.errorLight};
     color: ${({ theme }) => theme.colors.error};
     border-radius: 12px;
@@ -256,6 +264,13 @@ const ContentBox = styled.div`
     padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
     font-size: ${({ theme }) => theme.font.size.minor};
     font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .hint-msg {
+    margin-bottom: 4px;
+    padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
+    font-size: ${({ theme }) => theme.font.size.minor};
     display: flex;
     align-items: center;
   }

@@ -22,6 +22,7 @@ const FileUpload = forwardRef<InputRef, InputProps>(
       defaultValue,
       name,
       isError = false,
+      hint,
       isWarning = false,
       onChange,
       message,
@@ -137,6 +138,7 @@ const FileUpload = forwardRef<InputRef, InputProps>(
     );
 
     let errorMessage = null;
+    let hintMessage = null;
 
     const cleared =
       clearable && text?.length ? (
@@ -175,6 +177,10 @@ const FileUpload = forwardRef<InputRef, InputProps>(
           {message}
         </p>
       );
+    }
+
+    if (hint) {
+      hintMessage = <p className="hint-msg">{hint}</p>;
     }
 
     return (
@@ -229,6 +235,7 @@ const FileUpload = forwardRef<InputRef, InputProps>(
             {after}
           </Box>
           {errorMessage}
+          {hintMessage}
         </ContentBox>
       )
     );
@@ -273,6 +280,12 @@ const ContentBox = styled.div`
     padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
     font-size: ${({ theme }) => theme.font.size.minor};
     font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .hint-msg {
+    padding: ${({ theme }) => `${theme.spaces.space1} ${theme.spaces.space2}`};
+    font-size: ${({ theme }) => theme.font.size.minor};
     display: flex;
     align-items: center;
   }

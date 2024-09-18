@@ -16,6 +16,7 @@ const Select: React.FC<SelectProps> = ({
   iconBefore,
   enableInput = false,
   onClose,
+  hint,
   isError,
   message,
   value = "",
@@ -200,6 +201,7 @@ const Select: React.FC<SelectProps> = ({
         iconBefore={iconBefore}
         icon={showArrow && (visible ? "angle-top" : "angle-down")}
         enableControlledInput
+        hint={hint}
         isError={isError}
         message={message}
         readOnly={readOnly}
